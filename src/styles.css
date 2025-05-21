@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
-
-
 :root {
     --background-color: #ffffff;
     --text-color: #333333;
@@ -11,8 +9,6 @@
     --secondary-color: #6c757d;
     --hover-color: #e9ecef;
 }
-
-/* Variables para el tema oscuro */
 .dark-theme {
     --background-color: #121212;
     --text-color: #e0e0e0;
@@ -22,20 +18,15 @@
     --secondary-color: #adb5bd;
     --hover-color: #2d2d2d;
 }
-
-/* Aplicar variables al cuerpo y otros elementos comunes */
 body {
     background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* Estilos adicionales para componentes comunes */
 .card {
     background-color: var(--card-background);
     border-color: var(--border-color);
 }
-
 .btn-primary {
     background-color: var(--primary-color);
 }

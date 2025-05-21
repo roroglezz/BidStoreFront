@@ -13,7 +13,7 @@
                             <label for="full_name" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                                 Full name (as displayed on card)* </label>
                             <input type="text" id="full_name"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 "
                                 placeholder="Bonnie Green" required />
                         </div>
 
@@ -22,7 +22,7 @@
                                 class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Card number*
                             </label>
                             <input type="text" id="card-number-input"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pe-10 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pe-10 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500"
                                 placeholder="xxxx-xxxx-xxxx-xxxx" pattern="^4[0-9]{12}(?:[0-9]{3})?$" required />
                         </div>
 
@@ -41,7 +41,7 @@
                                     </svg>
                                 </div>
                                 <input datepicker datepicker-format="mm/yy" id="card-expiration-input" type="text"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-9 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-9 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                     placeholder="12/23" required />
                             </div>
                         </div>
@@ -59,13 +59,13 @@
                                     </svg>
                                 </button>
                                 <div id="cvv-desc" role="tooltip"
-                                    class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
+                                    class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300">
                                     The last 3 digits on back of card
                                     <div class="tooltip-arrow" data-popper-arrow></div>
                                 </div>
                             </label>
                             <input type="number" id="cvv-input" aria-describedby="helper-text-explanation"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500"
                                 placeholder="•••" required />
                         </div>
                     </div>
@@ -77,7 +77,7 @@
 
                 <div class="mt-6 grow sm:mt-8 lg:mt-0">
                     <div
-                        class="space-y-4 rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
+                        class="space-y-4 rounded-lg border border-gray-100 bg-gray-50 p-6">
                         <div class="space-y-2">
                             <div class="form-group">
                                 <label for="amount">Mount:</label>
@@ -88,8 +88,8 @@
 
                         <dl
                             class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-                            <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                            <dd class="text-base font-bold text-gray-900 dark:text-white">{{amount}}</dd>
+                            <dt class="text-base font-bold text-gray-900 ">Total</dt>
+                            <dd class="text-base font-bold text-gray-900">{{amount}}</dd>
                         </dl>
                     </div>
 
