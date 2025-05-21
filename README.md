@@ -1,59 +1,39 @@
-# BidStoreFront
+# 🛒 Subasta y Tienda Online - Angular App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+Este proyecto es una aplicación web desarrollada con **Angular** y **Tailwind CSS** que permite a los usuarios comprar, vender y subastar productos a través de una interfaz moderna e intuitiva. El sistema interactúa con una **API RESTful** para gestionar productos, usuarios, pagos y mensajería.
 
-## Development server
+## 🚀 Características Principales
 
-To start a local development server, run:
+- 🔐 **Sistema de autenticación y protección de rutas** con `AuthGuard`.
+- 🧑‍💼 **Registro y gestión de usuarios**.
+- 🛍️ **Publicación de productos** para **venta directa**, **subasta**, o **ambas modalidades**.
+- 💰 **Sistema de pujas y compras** en tiempo real.
+- 💳 **Recarga de cuenta de usuario** para participar en compras o subastas.
+- 🗂️ **Exploración de productos** por categorías.
+- ✉️ **Sistema de mensajería**
+- 🛠️ **Panel de administración** para gestión avanzada de usuarios y productos.
+- 🎨 **Diseño responsivo y moderno** con **Tailwind CSS**.
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Angular** 17+
+- **Tailwind CSS** 3.x
+- **TypeScript**
+- **RxJS** y servicios para consumo de **API REST**
+- **Angular Router & AuthGuard**
+- **Formulario reactivo y validación**
+- **Mensajería interna personalizada**
+- **Interfaz responsiva y accesible**
+
+## 📦 Instalación
 
 ```bash
+# Clonar el repositorio
+git clone https://github.com/roroglezz/auction-manager-front.git
+cd auction-manager-front
+
+# Instalar dependencias
+npm install
+
+# Iniciar el servidor de desarrollo
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
