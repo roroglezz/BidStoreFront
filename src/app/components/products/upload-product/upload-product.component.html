@@ -1,31 +1,31 @@
-<div class="light:bg-white dark:bg-gray-900 px-4 py-8 sm:px-6 lg:px-8">
+<div class="light:bg-white px-4 py-8 sm:px-6 lg:px-8">
     <div class="mb-8">
         <div class="max-w-3xl mx-auto text-center">
-            <h1 class="text-3xl font-bold mb-3 text-gray-900 dark:text-white">Create New Product</h1>
-            <p class="light:text-gray-600 dark:text-gray-300">Add a new product to the auction platform</p>
+            <h1 class="text-3xl font-bold mb-3 text-gray-900">Create New Product</h1>
+            <p class="light:text-gray-600">Add a new product to the auction platform</p>
         </div>
     </div>
 
     <!-- Product Form -->
     <div
-        class="max-w-4xl mx-auto light:bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
-        <div class="p-6 border-b light:border-gray-200 dark:border-gray-700 light:bg-gray-50 dark:bg-gray-750">
-            <h2 class="text-xl font-semibold light:text-gray-800 dark:text-white">Product Details</h2>
+        class="max-w-4xl mx-auto light:bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200">
+        <div class="p-6 border-b light:border-gray-200 light:bg-gray-50">
+            <h2 class="text-xl font-semibold light:text-gray-800">Product Details</h2>
         </div>
 
         <div class="p-8">
             <form (ngSubmit)="addProduct()" class="space-y-8">
                 <!-- Basic Information Section -->
-                <div class="pb-6 border-b border-gray-200 dark:border-gray-700">
-                    <h3 class="text-lg font-medium mb-4 light:text-gray-800 dark:text-gray-200">Basic Information</h3>
+                <div class="pb-6 border-b border-gray-200">
+                    <h3 class="text-lg font-medium mb-4 light:text-gray-800">Basic Information</h3>
 
                     <div class="mb-6">
                         <div>
-                            <label for="name" class="block mb-2 light:text-gray-700 dark:text-gray-300">Name
+                            <label for="name" class="block mb-2 light:text-gray-700">Name
                                 <span class="text-red-500">*</span>
                             </label>
                             <input [(ngModel)]="productForm.name" name="name" id="name" placeholder="Enter product name"
-                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 required aria-required="true" />
                         </div>
                     </div>
@@ -33,71 +33,71 @@
                     <div>
                         <div>
                             <label for="description"
-                                class="block mb-2 light:text-gray-700 dark:text-gray-300">Description
+                                class="block mb-2 light:text-gray-700">Description
                                 <span class="text-red-500">*</span>
                             </label>
                             <textarea [(ngModel)]="productForm.description" name="description" id="description"
                                 placeholder="Enter product description"
-                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 required aria-required="true" rows="4"></textarea>
                         </div>
                     </div>
                 </div>
 
                 <!-- Pricing Section -->
-                <div class="pb-6 border-b border-gray-200 dark:border-gray-700">
-                    <h3 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Pricing & Inventory</h3>
+                <div class="pb-6 border-b border-gray-200">
+                    <h3 class="text-lg font-medium mb-4 text-gray-800">Pricing & Inventory</h3>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label for="base_price" class="block mb-2 light:text-gray-700 dark:text-gray-300">Base Price
+                            <label for="base_price" class="block mb-2 light:text-gray-700">Base Price
                                 <span class="text-red-500">*</span>
                             </label>
                             <input [(ngModel)]="productForm.base_price" name="base_price" id="base_price" type="number"
                                 placeholder="Enter base price"
-                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 light:border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 light:border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 required aria-required="true" />
                         </div>
 
                         <div>
-                            <label for="offer_price" class="block mb-2 light:text-gray-700 dark:text-gray-300">Offer
+                            <label for="offer_price" class="block mb-2 light:text-gray-700">Offer
                                 Price
                                 <span class="text-red-500">*</span>
                             </label>
                             <input [(ngModel)]="productForm.offer_price" name="offer_price" id="offer_price"
                                 type="number" placeholder="Enter offer price"
-                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 required aria-required="true" />
                         </div>
                     </div>
 
                     <div>
                         <div>
-                            <label for="units" class="block mb-2 light:text-gray-700 dark:text-gray-300">Units Available
+                            <label for="units" class="block mb-2 light:text-gray-700">Units Available
                                 <span class="text-red-500">*</span>
                             </label>
                             <input [(ngModel)]="productForm.units" name="units" id="units" type="number"
                                 placeholder="Enter number of units"
-                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 required aria-required="true" />
                         </div>
                     </div>
                 </div>
 
                 <!-- Classification Section -->
-                <div class="pb-6 border-b border-gray-200 dark:border-gray-700">
-                    <h3 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Classification</h3>
+                <div class="pb-6 border-b border-gray-200">
+                    <h3 class="text-lg font-medium mb-4 text-gray-800">Classification</h3>
 
                     <div class="mb-6">
                         <div>
                             <label for="subcategory_id"
-                                class="block mb-2 light:text-gray-700 dark:text-gray-300">Subcategory
+                                class="block mb-2 light:text-gray-700">Subcategory
                                 <span class="text-red-500">*</span>
                             </label>
                             <select [(ngModel)]="productForm.subcategory_id" name="subcategory_id" id="subcategory_id"
-                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 required aria-required="true">
-                                <option value="" disabled selected class="light:text-gray-500 dark:text-gray-400">Select
+                                <option value="" disabled selected class="light:text-gray-500">Select
                                     a
                                     subcategory</option>
                                 <option *ngFor="let subcategory of subcategories" [value]="subcategory.id"
@@ -110,22 +110,22 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block mb-2 light:text-gray-700 dark:text-gray-300">Seller</label>
-                            <div class="p-3 rounded-lg light:bg-gray-50 dark:bg-gray-700">
-                                <div class="light:text-gray-600 dark:text-gray-300">You are the seller of this product
+                            <label class="block mb-2 light:text-gray-700">Seller</label>
+                            <div class="p-3 rounded-lg light:bg-gray-50">
+                                <div class="light:text-gray-600">You are the seller of this product
                                 </div>
                             </div>
                         </div>
 
                         <div>
                             <label for="condition_id"
-                                class="block mb-2 light:text-gray-700 dark:text-gray-300">Condition
+                                class="block mb-2 light:text-gray-700">Condition
                                 <span class="text-red-500">*</span>
                             </label>
                             <select [(ngModel)]="productForm.condition_id" name="condition_id" id="condition_id"
-                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 light:border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 light:border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 required aria-required="true">
-                                <option value="" disabled selected class="light:text-gray-500 dark:text-gray-400">Select
+                                <option value="" disabled selected class="light:text-gray-500">Select
                                     a
                                     condition</option>
                                 <option *ngFor="let condition of conditions" [value]="condition.id" class="text-black">
@@ -137,30 +137,30 @@
                 </div>
 
                 <!-- Auction Settings Section -->
-                <div class="pb-6 border-b border-gray-200 dark:border-gray-700">
-                    <h3 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Auction Settings</h3>
+                <div class="pb-6 border-b border-gray-200">
+                    <h3 class="text-lg font-medium mb-4 text-gray-800">Auction Settings</h3>
 
                     <div class="mb-6">
                         <div>
-                            <label for="sale_type" class="block mb-2 light:text-gray-700 dark:text-gray-300">Sale Type
+                            <label for="sale_type" class="block mb-2 light:text-gray-700">Sale Type
                                 <span class="text-red-500">*</span>
                             </label>
                             <select [(ngModel)]="productForm.sale_type" name="sale_type" id="sale_type"
-                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 light:border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                                class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 light:border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 required aria-required="true">
                                 <option value="auction" class="text-black">Auction</option>
                                 <option value="direct" class="text-black">Direct</option>
                                 <option value="both" class="text-black">Both</option>
                             </select>
-                            <div class="mt-2 text-sm light:text-gray-600 dark:text-gray-400">
+                            <div class="mt-2 text-sm light:text-gray-600">
                                 <ul class="list-disc pl-5 space-y-1">
-                                    <li><strong class="light:text-gray-700 dark:text-gray-300">Auction Only:</strong>
+                                    <li><strong class="light:text-gray-700">Auction Only:</strong>
                                         Product
                                         will only be available for bidding</li>
-                                    <li><strong class="light:text-gray-700 dark:text-gray-300">Direct Sale
+                                    <li><strong class="light:text-gray-700">Direct Sale
                                             Only:</strong>
                                         Product will only be available for direct purchase</li>
-                                    <li><strong class="light:text-gray-700 dark:text-gray-300">Both:</strong> Product
+                                    <li><strong class="light:text-gray-700">Both:</strong> Product
                                         can be
                                         purchased directly or bid on</li>
                                 </ul>
@@ -169,13 +169,13 @@
                             <div *ngIf="productForm.sale_type == 'auction' || productForm.sale_type == 'both'"
                                 class="mt-4">
                                 <label for="auction_price"
-                                    class="block mb-2 light:text-gray-700 dark:text-gray-300">Auction
+                                    class="block mb-2 light:text-gray-700">Auction
                                     Price
                                     <span class="text-red-500">*</span>
                                 </label>
                                 <input [(ngModel)]="productForm.auction_price" name="auction_price" id="auction_price"
                                     type="number" placeholder="Enter auction price"
-                                    class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 light:border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                                    class="w-full px-4 py-2.5 rounded-lg border light:bg-white light:text-gray-900 light:border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                     required aria-required="true" />
                             </div>
                         </div>
@@ -183,24 +183,24 @@
 
                     <div class="mb-6">
                         <div>
-                            <label for="duration" class="block mb-2 light:text-gray-700 dark:text-gray-300">Duration
+                            <label for="duration" class="block mb-2 light:text-gray-700">Duration
                                 (hours)
                                 <span class="text-red-500">*</span>
                             </label>
                             <div class="relative">
                                 <input [(ngModel)]="productForm.duration" name="duration" id="duration" type="number"
                                     min="1" max="240" placeholder="Enter duration in hours"
-                                    class="w-full px-4 py-2.5 pr-10 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                                    class="w-full px-4 py-2.5 pr-10 rounded-lg border light:bg-white light:text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                     required aria-required="true" />
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 absolute right-3 top-1/2 transform -translate-y-1/2 light:text-gray-500 dark:text-gray-400"
+                                    class="h-5 w-5 absolute right-3 top-1/2 transform -translate-y-1/2 light:text-gray-500"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <polyline points="12 6 12 12 16 14"></polyline>
                                 </svg>
                             </div>
-                            <div class="mt-2 text-sm light:text-gray-600 dark:text-gray-400">Recommended: 1-48 hours for
+                            <div class="mt-2 text-sm light:text-gray-600">Recommended: 1-48 hours for
                                 most
                                 items, longer for special auctions</div>
                         </div>
@@ -208,13 +208,13 @@
 
                     <div>
                         <div>
-                            <label for="image_url" class="block mb-2 light:text-gray-700 dark:text-gray-300">Product
+                            <label for="image_url" class="block mb-2 light:text-gray-700">Product
                                 Image
                                 <span class="text-red-500">*</span>
                             </label>
                             <div>
                                 <label for="image_url"
-                                    class="flex items-center justify-center gap-2 px-4 py-2.5 border rounded-lg cursor-pointer light:bg-white light:text-indigo-600 light:border-indigo-300 hover:bg-indigo-50 dark:bg-gray-700 dark:text-indigo-400 dark:border-indigo-800 dark:hover:bg-indigo-900/30 transition-colors">
+                                    class="flex items-center justify-center gap-2 px-4 py-2.5 border rounded-lg cursor-pointer light:bg-white light:text-indigo-600 light:border-indigo-300 hover:bg-indigo-50 transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round">
@@ -226,7 +226,7 @@
                                 </label>
                                 <input type="file" id="image_url" name="image_url" (change)="onFileChange($event)"
                                     class="sr-only" required aria-required="true" />
-                                <span class="ml-3 light:text-gray-600 dark:text-gray-400">{{ fileName }}</span>
+                                <span class="ml-3 light:text-gray-600">{{ fileName }}</span>
                             </div>
                         </div>
                     </div>
@@ -234,11 +234,11 @@
 
                 <div class="flex flex-wrap justify-end gap-4 pt-4">
                     <button type="button" routerLink="/profile"
-                        class="px-6 py-2.5 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        class="px-6 py-2.5 rounded-lg font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Cancel
                     </button>
                     <button type="submit"
-                        class="px-6 py-2.5 rounded-lg font-medium bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white transition-colors"
+                        class="px-6 py-2.5 rounded-lg font-medium bg-indigo-600 hover:bg-indigo-700 text-white transition-colors"
                         [disabled]="!isFormValid()" [ngClass]="{'opacity-50 cursor-not-allowed': !isFormValid()}">
                         Create Product
                     </button>

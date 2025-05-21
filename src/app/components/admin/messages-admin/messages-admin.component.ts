@@ -118,13 +118,21 @@ export class MessagesAdminComponent {
     this.loading = true;
   
     // Crear una copia del formulario sin el ID de usuario
-    const messageData = {
+    const messageData: {
+      subject: string;
+      message: string;
+      readed: boolean;
+      product_id?: number;
+    } = {
       subject: this.messageForm.subject,
       message: this.messageForm.message,
-      readed: this.messageForm.readed,
-      product_id: this.messageForm.product_id
-      // No necesitamos incluir user_id: 'all' si el backend no lo espera
+      readed: this.messageForm.readed
     };
+    
+    // Añadir el producto_id solo si es distinto de 0
+    if (this.messageForm.product_id !== 0) {
+      messageData.product_id = this.messageForm.product_id;
+    }
   
     // Usar el método broadcastMessage que ya existe en tu servicio
     this.messageService.broadcastMessage(messageData).subscribe(

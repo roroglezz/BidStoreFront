@@ -1,4 +1,7 @@
 /* Search Section */
+*{
+    text-decoration: none;
+}
 .search-section {
     margin-bottom: 3rem;
 }

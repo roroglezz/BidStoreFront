@@ -238,16 +238,22 @@ export class ListAuctionsComponent implements OnInit {
   }
 
   checkDarkMode() {
-    // Comprobamos si el elemento body o html tiene las clases que indican modo oscuro
-    const bodyElement = this.document.body;
-    const htmlElement = this.document.documentElement;
+    // Por defecto asumimos que no está en modo oscuro
+    this.isDarkMode = false;
     
-    this.isDarkMode = 
-      bodyElement.classList.contains('dark-theme') || 
-      htmlElement.classList.contains('dark-theme') || 
-      bodyElement.classList.contains('vs-dark') || 
-      htmlElement.classList.contains('vs-dark') ||
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Comprobamos si el usuario tiene preferencia por modo oscuro en su sistema
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Comprobamos si el tema de la aplicación está en modo oscuro
+    const bodyHasDarkClass = this.document.body.classList.contains('dark-theme') || 
+                            this.document.body.classList.contains('vs-dark');
+    const htmlHasDarkClass = this.document.documentElement.classList.contains('dark-theme') || 
+                            this.document.documentElement.classList.contains('vs-dark');
+    
+    // Consideramos que está en modo oscuro si cualquiera de estas condiciones es verdadera
+    this.isDarkMode = bodyHasDarkClass || htmlHasDarkClass || prefersDark;
+    
+    console.log('Modo oscuro detectado:', this.isDarkMode);
   }
 
   placeBid(auction: any) {
@@ -262,7 +268,8 @@ export class ListAuctionsComponent implements OnInit {
     const currentBid = parseFloat(auction.auction_price);
     const minimumBid = currentBid * 1.05; // 5% higher than current bid
 
-    Swal.fire({
+    // Configuración condicional para el tema del modal
+    const swalOptions: any = {
       title: 'Place a bid',
       html: `
         <p>Current bid: €${currentBid.toFixed(2)}</p>
@@ -277,22 +284,29 @@ export class ListAuctionsComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Place Bid',
       showLoaderOnConfirm: true,
-      customClass: {
-        popup: this.isDarkMode ? 'swal2-dark' : '',
-        input: this.isDarkMode ? 'swal2-input-dark' : '',
-        confirmButton: this.isDarkMode ? 'swal2-confirm-dark' : '',
-        cancelButton: this.isDarkMode ? 'swal2-cancel-dark' : ''
-      },
-      background: this.isDarkMode ? '#1e1e1e' : '#ffffff',
-      color: this.isDarkMode ? '#e0e0e0' : undefined,
-      preConfirm: (bid) => {
-        if (parseFloat(bid) < minimumBid) {
+      preConfirm: function(bid: any): any {
+        const bidValue = parseFloat(bid);
+        if (bidValue < minimumBid) {
           Swal.showValidationMessage(`Bid must be at least €${minimumBid.toFixed(2)}`);
           return false;
         }
         return bid;
       }
-    }).then((result) => {
+    };
+    
+    // Solo aplicamos estilos de modo oscuro si realmente estamos en modo oscuro
+    if (this.isDarkMode) {
+      swalOptions.customClass = {
+        popup: 'swal2-dark',
+        input: 'swal2-input-dark',
+        confirmButton: 'swal2-confirm-dark',
+        cancelButton: 'swal2-cancel-dark'
+      };
+      swalOptions.background = '#fffff';
+      swalOptions.color = '#000000';
+    }
+
+    Swal.fire(swalOptions).then((result) => {
       if (result.isConfirmed) {
         const userId = localStorage.getItem('userId');
 
@@ -310,17 +324,25 @@ export class ListAuctionsComponent implements OnInit {
           response => {
             console.log('Bid placed successfully:', response);
             this.loadData();
-            Swal.fire({
+            
+            // Configuración condicional para el mensaje de confirmación
+            const confirmOptions: any = {
               title: 'Bid Placed!',
               text: `Your bid of €${result.value} has been placed.`,
-              icon: 'success',
-              customClass: {
-                popup: this.isDarkMode ? 'swal2-dark' : '',
-                confirmButton: this.isDarkMode ? 'swal2-confirm-dark' : ''
-              },
-              background: this.isDarkMode ? '#1e1e1e' : '#ffffff',
-              color: this.isDarkMode ? '#e0e0e0' : undefined
-            });
+              icon: 'success'
+            };
+            
+            // Solo aplicamos estilos de modo oscuro si realmente estamos en modo oscuro
+            if (this.isDarkMode) {
+              confirmOptions.customClass = {
+                popup: 'swal2-dark',
+                confirmButton: 'swal2-confirm-dark'
+              };
+              confirmOptions.background = '#000000';
+              confirmOptions.color = '#ffffff';
+            }
+            
+            Swal.fire(confirmOptions);
           },
           error => {
             console.error('Error placing bid:', error);

@@ -1,13 +1,13 @@
 <div
-  class="min-h-screen bg-gradient-to-br light:from-indigo-50 light:via-white light:to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+  class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-indigo-100 py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
   <div class="w-full max-w-md space-y-8">
     <!-- Card container with shadow -->
-    <div class="light:bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden">
+    <div class="bg-white rounded-xl shadow-xl overflow-hidden">
       <!-- Header with wave background -->
-      <div class="bg-gradient-to-r light:from-indigo-900 to-indigo-800 px-6 py-8 relative">
+      <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 px-6 py-8 relative">
         <div class="absolute bottom-0 left-0 right-0">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-16">
-            <path fill="currentColor" fill-opacity="1" class="text-white dark:text-gray-800"
+            <path fill="#ffffff" fill-opacity="1"
               d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
             </path>
           </svg>
@@ -22,23 +22,23 @@
       </div>
 
       <!-- Form section -->
-      <div class="px-8 py-8 light:bg-white dark:bg-gray-600">
+      <div class="px-8 py-8 light:bg-white">
         <form class="space-y-6" (submit)="login()">
           <!-- Email field -->
           <div class="space-y-2">
-            <label for="email" class="block text-sm font-medium light:text-gray-700 dark:text-gray-300">
+            <label for="email" class="block text-sm font-medium text-gray-700">
               Email Address
             </label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 dark:text-gray-500" fill="none"
-                  viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                 </svg>
               </div>
               <input [(ngModel)]="credentials.email" type="email" name="email" id="email" autocomplete="email" required
-                class="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg light:text-gray-900 dark:text-gray-100 light:bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400 sm:text-sm transition-all duration-200"
+                class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-all duration-200"
                 placeholder="you@example.com">
             </div>
           </div>
@@ -46,28 +46,28 @@
           <!-- Password field -->
           <div class="space-y-2">
             <div class="flex items-center justify-between">
-              <label for="password" class="block text-sm font-medium light:text-gray-700 dark:text-gray-300">
+              <label for="password" class="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <a href="#"
-                class="text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors duration-200">
+                class="text-xs font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-200">
                 Forgot your password?
               </a>
             </div>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 dark:text-gray-500" fill="none"
-                  viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
               <input [(ngModel)]="credentials.password" [type]="showPassword ? 'text' : 'password'" name="password"
                 id="password" autocomplete="current-password" required
-                class="block w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-600 rounded-lg light:text-gray-900 dark:text-gray-100 light:bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-indigo-500 dark:focus:border-indigo-400 sm:text-sm transition-all duration-200"
+                class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-all duration-200"
                 placeholder="••••••••">
               <button type="button" (click)="showPassword = !showPassword"
-                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 focus:outline-none">
+                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-500 focus:outline-none">
                 <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -87,8 +87,8 @@
           <!-- Remember me checkbox -->
           <div class="flex items-center">
             <input id="remember-me" name="remember-me" type="checkbox"
-              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-400 border-gray-300 dark:border-gray-600 rounded">
-            <label for="remember-me" class="ml-2 block text-sm light:text-gray-700 dark:text-gray-300">
+              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+            <label for="remember-me" class="ml-2 block text-sm text-gray-700">
               Remember me
             </label>
           </div>
@@ -96,7 +96,7 @@
           <!-- Submit button -->
           <div>
             <button type="submit"
-              class="group relative w-full flex justify-center py-3 px-4 border border-transparent rounded-lg text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-700 dark:from-indigo-500 dark:to-indigo-600 hover:from-indigo-700 hover:to-indigo-800 dark:hover:from-indigo-600 dark:hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+              class="group relative w-full flex justify-center py-3 px-4 border border-transparent rounded-lg text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
               <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                 <svg xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5 text-indigo-300 group-hover:text-indigo-200 transition-colors duration-200" fill="none"
@@ -114,18 +114,19 @@
         <div class="mt-6">
           <div class="relative">
             <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
+              <div class="w-full border-t border-gray-300"></div>
             </div>
+
           </div>
         </div>
       </div>
 
       <!-- Footer with register link -->
-      <div class="px-8 py-4 light:bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600 text-center">
-        <p class="text-sm light:text-gray-600 dark:text-gray-300">
+      <div class="px-8 py-4 bg-gray-50 border-t border-gray-200 text-center">
+        <p class="text-sm text-gray-600">
           Not a member yet?
           <a routerLink="/register"
-            class="font-medium light:text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors duration-200">
+            class="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-200">
             Create an account
           </a>
         </p>

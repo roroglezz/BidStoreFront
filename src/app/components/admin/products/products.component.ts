@@ -32,6 +32,8 @@ export class ProductsComponent {
     condition_id: 0,
     image_url: null as File | null,
     duration: 0,
+    sale_type: 'direct',
+    auction_price: 0,
     _method: ''
   };
   addProductButton: boolean = false;
@@ -142,6 +144,11 @@ export class ProductsComponent {
     formData.append('seller_id', this.productForm.seller_id.toString());
     formData.append('condition_id', this.productForm.condition_id.toString());
     formData.append('duration', this.productForm.duration.toString());
+    formData.append('sale_type', this.productForm.sale_type);
+    
+    if (this.productForm.sale_type === 'auction' || this.productForm.sale_type === 'both') {
+      formData.append('auction_price', this.productForm.auction_price.toString());
+    }
 
     // Agregar la imagen solo si se ha seleccionado
     if (this.productForm.image_url) {
@@ -175,6 +182,8 @@ export class ProductsComponent {
     this.productForm.condition_id = product.condition_id;
     this.productForm.duration = product.duration;
     this.productForm.image_url = null; // No necesitas poner la imagen en el producto editado si no la modificas
+    this.productForm.sale_type = product.sale_type || 'direct';
+    this.productForm.auction_price = product.auction_price || 0;
     this.addProductButton = true; // Mostrar formulario de edición
   }
 
@@ -190,6 +199,12 @@ export class ProductsComponent {
     formData.append('seller_id', this.productForm.seller_id.toString());
     formData.append('condition_id', this.productForm.condition_id.toString());
     formData.append('duration', this.productForm.duration.toString());
+    formData.append('sale_type', this.productForm.sale_type);
+    
+    if (this.productForm.sale_type === 'auction' || this.productForm.sale_type === 'both') {
+      formData.append('auction_price', this.productForm.auction_price.toString());
+    }
+    
     formData.append('_method', 'PUT'); // Método para actualizar el producto
 
     // Solo agregar la imagen si se ha seleccionado una nueva imagen
@@ -215,6 +230,8 @@ export class ProductsComponent {
           condition_id: 0,
           image_url: null,
           duration: 0,
+          sale_type: 'direct',
+          auction_price: 0,
           _method: ''
         };
         this.addProductButton = false; // Ocultar formulario
@@ -291,6 +308,8 @@ export class ProductsComponent {
       condition_id: 0,
       image_url: null,
       duration: 0,
+      sale_type: 'direct',
+      auction_price: 0,
       _method: ''
     };
     this.productToEdit = null;  // Ensure no data is carried over from editing
@@ -344,7 +363,9 @@ export class ProductsComponent {
         !this.productForm.subcategory_id ||
         !this.productForm.seller_id ||
         !this.productForm.condition_id ||
-        !this.productForm.duration) {
+        !this.productForm.sale_type ||
+        !this.productForm.duration ||
+        ((this.productForm.sale_type === 'auction' || this.productForm.sale_type === 'both') && !this.productForm.auction_price)) {
       console.log('Missing required fields');
       return false;
     }

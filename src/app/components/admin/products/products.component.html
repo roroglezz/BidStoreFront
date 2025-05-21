@@ -267,6 +267,33 @@
 
                         <div class="form-row">
                             <div class="form-group">
+                                <label for="sale_type" class="form-label">Sale Type <span class="required">*</span></label>
+                                <select [(ngModel)]="productForm.sale_type" name="sale_type" id="sale_type"
+                                    class="form-control select" required aria-required="true">
+                                    <option value="auction">Auction</option>
+                                    <option value="direct">Direct</option>
+                                    <option value="both">Both</option>
+                                </select>
+                                <div class="helper-text">
+                                    <ul class="list-styles-disc space-y-1 mt-2">
+                                        <li><strong>Auction Only:</strong> Product will only be available for bidding</li>
+                                        <li><strong>Direct Sale Only:</strong> Product will only be available for direct purchase</li>
+                                        <li><strong>Both:</strong> Product can be purchased directly or bid on</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row" *ngIf="productForm.sale_type === 'auction' || productForm.sale_type === 'both'">
+                            <div class="form-group">
+                                <label for="auction_price" class="form-label">Auction Price <span class="required">*</span></label>
+                                <input [(ngModel)]="productForm.auction_price" name="auction_price" id="auction_price"
+                                    type="number" placeholder="Enter auction price" class="form-control" required aria-required="true" />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
                                 <label for="duration" class="form-label">Duration (hours) <span
                                         class="required">*</span></label>
                                 <div class="input-with-icon">

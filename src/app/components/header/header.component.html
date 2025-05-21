@@ -6,7 +6,7 @@
             <div class="flex items-center">
                 <a routerLink="/home" class="flex items-center space-x-2">
                     <img src="logo.jpg" alt="Logo" class="h-10 w-auto object-contain rounded-md">
-                    <span class="text-xl font-bold text-indigo-600 hidden xl:block">Auction Manager</span>
+                    <span class="text-xl font-bold text-indigo-600 hidden xl:block">Bid Store</span>
                 </a>
             </div>
 
@@ -117,7 +117,7 @@
                             </div>
                         </a>
                     </div>
-                    <app-theme-toggle class="mx-2"></app-theme-toggle>
+                    <app-theme-toggle *ngIf="authService.isLoggedIn()" class="mx-2"></app-theme-toggle>
                 </div>
             </div>
         </div>
@@ -273,7 +273,7 @@
                         <span>Favorites</span>
                     </a>
 
-                    <app-theme-toggle class="mx-2"></app-theme-toggle>
+                    <app-theme-toggle *ngIf="authService.isLoggedIn()" class="mx-2"></app-theme-toggle>
                 </nav>
 
                 <!-- Botones de autenticación móvil -->
