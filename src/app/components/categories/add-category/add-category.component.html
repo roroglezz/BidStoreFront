@@ -1,0 +1,22 @@
+<div class="add-category-form container mt-4">
+    <form (ngSubmit)="addCategory()" class="p-4 border rounded shadow-sm bg-light">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" [(ngModel)]="categoryForm.name" name="name" class="form-control"
+                placeholder="Enter category name" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" [(ngModel)]="categoryForm.description" name="description" class="form-control"
+                rows="3" placeholder="Enter category description" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="image_url" class="form-label">Image:</label>
+            <input type="file" id="image_url" (change)="onFileSelected($event)" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Add Category</button>
+    </form>
+</div>

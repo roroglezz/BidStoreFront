@@ -1,0 +1,56 @@
+<div class="not-found-container">
+    <div class="not-found-content">
+        <div class="error-code">404</div>
+
+        <div class="error-illustration">
+            <svg viewBox="0 0 200 120" class="illustration">
+                <g fill="none" fill-rule="evenodd">
+                    <path d="M63.75 37.5l36-18.75 36 18.75v56.25l-36 18.75-36-18.75z" fill="#F2F4F8"
+                        fill-rule="nonzero" />
+                    <path fill="#DFE3E8" d="M135.75 93.75l-36 18.75V56.25l36-18.75z" />
+                    <path d="M99.75 112.5l-36-18.75V37.5l36 18.75z" fill="#F2F4F8" fill-rule="nonzero" />
+                    <path d="M79.5 48.75L99.75 37.5l20.25 11.25v22.5L99.75 82.5 79.5 71.25v-22.5z" fill="#DFE3E8"
+                        fill-rule="nonzero" />
+                    <circle fill="#FE5252" cx="99.75" cy="56.25" r="6" />
+                    <path d="M103.5 48.75h-7.5v15h7.5v-15z" fill="#FE5252" />
+                    <path d="M27.75 93.75L63.75 75v-37.5L27.75 56.25v37.5z" fill="#F2F4F8" fill-rule="nonzero" />
+                    <path d="M27.75 56.25l36-18.75 36 18.75v37.5l-36 18.75-36-18.75v-37.5z" stroke="#B3CFE5"
+                        stroke-width=".75" />
+                    <path d="M63.75 75l36-18.75v37.5l-36 18.75V75z" fill="#DFE3E8" fill-rule="nonzero" />
+                    <path d="M63.75 112.5l-36-18.75v-37.5l36 18.75v37.5z" fill="#F2F4F8" fill-rule="nonzero" />
+                    <path d="M43.5 67.5l20.25-11.25L84 67.5V90L63.75 101.25 43.5 90V67.5z" fill="#DFE3E8"
+                        fill-rule="nonzero" />
+                    <path d="M63.75 101.25L43.5 90V67.5l20.25 11.25v22.5z" fill="#F2F4F8" fill-rule="nonzero" />
+                    <circle fill="#FE5252" cx="63.75" cy="75" r="6" />
+                    <path d="M67.5 67.5H60v15h7.5v-15zm3.75-48.75l36-18.75 36 18.75" stroke="#B3CFE5"
+                        stroke-width=".75" />
+                </g>
+            </svg>
+        </div>
+
+        <h1 class="error-title">Page not found</h1>
+
+        <p class="error-message">
+            The page you're looking for doesn't exist or has been moved.
+        </p>
+
+        <div class="action-buttons">
+            <button (click)="goBack()" class="btn btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                        clip-rule="evenodd" />
+                </svg>
+                Go Back
+            </button>
+
+            <button routerLink="/home" class="btn btn-primary">
+                Go to Home
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

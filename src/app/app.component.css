@@ -1,0 +1,148 @@
+/* Estilos para el contenedor principal de la aplicación */
+:host {
+    display: block;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Mejoras para componentes comunes en toda la aplicación */
+/* Cards */
+.card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Botones */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+/* Textos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-color);
+}
+
+/* Enlaces */
+a {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    filter: brightness(1.2);
+}
+
+/* Input y form fields */
+input,
+select,
+textarea {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* Modo oscuro específico para algunos elementos */
+:host-context(.dark-theme) .bg-white {
+    background-color: var(--card-background);
+}
+
+:host-context(.dark-theme) .card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+:host-context(.dark-theme) .border {
+    border-color: var(--border-color);
+}
+
+/* Adaptación para modales */
+.modal-content {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+/* Tablas */
+table {
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+table th {
+    background-color: var(--hover-color);
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+:host-context(.dark-theme) table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Scrollbars personalizados para tema oscuro */
+:host-context(.dark-theme) ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+:host-context(.dark-theme) ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+:host-context(.dark-theme) ::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 5px;
+}
+
+:host-context(.dark-theme) ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Efectos visuales para cambios de tema */
+.theme-transition {
+    transition: all 0.3s ease;
+}
+
+/* Mejorar contraste de texto en tema oscuro */
+:host-context(.dark-theme) .text-gray-500 {
+    color: #a0aec0 !important;
+}
+
+/* Suavizar bordes en tema oscuro */
+:host-context(.dark-theme) {
+    --border-radius: 8px;
+}
+
+:host-context(.dark-theme) .rounded-lg {
+    border-radius: var(--border-radius);
+}
+
+/* Ajuste para badges en tema oscuro */
+:host-context(.dark-theme) .badge {
+    background-color: var(--hover-color);
+}

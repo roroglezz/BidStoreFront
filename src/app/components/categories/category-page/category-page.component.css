@@ -1,0 +1,162 @@
+/* Search Section */
+.search-section {
+    margin-bottom: 3rem;
+}
+
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.search-title {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #4F46E5;
+    margin-bottom: 1.5rem;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.search-input-group {
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    padding-right: 3rem;
+    font-size: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.search-input-error {
+    border-color: #EF4444;
+}
+
+.search-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: #4F46E5;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.search-button:hover {
+    background: #4338CA;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.subcategory-select-container {
+    width: 100%;
+}
+
+.subcategory-select {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234F46E5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.25rem;
+    font-size: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.subcategory-select:focus {
+    outline: none;
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.products-cards {
+    border: 2px solid white;
+}
+
+
+:host ::ng-deep .ngx-pagination {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    gap: 0.25rem;
+}
+
+:host ::ng-deep .ngx-pagination li {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+:host ::ng-deep .ngx-pagination a,
+:host ::ng-deep .ngx-pagination button {
+    padding: 0.5rem 1rem !important;
+    color: #4f46e5 !important;
+    background: white !important;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s;
+    border-radius: 0.5rem;
+}
+
+:host ::ng-deep .ngx-pagination a:hover,
+:host ::ng-deep .ngx-pagination button:hover {
+    background: #f3f4f6 !important;
+}
+
+:host ::ng-deep .ngx-pagination .current {
+    background: #4f46e5 !important;
+    color: white !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.5rem;
+    border: 1px solid #4338ca;
+}
+
+/* Soporte para modo oscuro */
+.dark :host ::ng-deep .ngx-pagination a,
+.dark :host ::ng-deep .ngx-pagination button {
+    background: #1f2937 !important;
+    color: #a5b4fc !important;
+    border-color: #374151;
+}
+
+.dark :host ::ng-deep .ngx-pagination a:hover,
+.dark :host ::ng-deep .ngx-pagination button:hover {
+    background: #2d3748 !important;
+}
+
+.dark :host ::ng-deep .ngx-pagination .current {
+    background: #4f46e5 !important;
+    border-color: #6366f1;
+}

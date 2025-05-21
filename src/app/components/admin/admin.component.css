@@ -1,0 +1,579 @@
+/* Admin Dashboard Styles */
+.admin-dashboard {
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.admin-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.admin-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #0f172a;
+}
+
+.admin-subtitle {
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #64748b;
+}
+
+/* Dashboard Stats */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  border-radius: 1rem;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  background-color: #4f46e5;
+  color: white;
+}
+
+.stat-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.stat-content h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #64748b;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1e293b;
+}
+
+/* Admin Cards Grid */
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.admin-card {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid transparent;
+}
+
+.admin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Card Icons with different colors */
+.card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: white;
+}
+
+.user-icon {
+  background-color: #4f46e5;
+}
+
+.category-icon {
+  background-color: #0891b2;
+}
+
+.subcategory-icon {
+  background-color: #0d9488;
+}
+
+.product-icon {
+  background-color: #2563eb;
+}
+
+.condition-icon {
+  background-color: #7c3aed;
+}
+
+.auction-icon {
+  background-color: #db2777;
+}
+
+.message-icon {
+  background-color: #f59e0b;
+}
+
+.form-icon {
+  background-color: #f50b0b;
+}
+
+/* Color borders for cards */
+.admin-card:nth-child(1) {
+  border-left-color: #4f46e5;
+}
+
+.admin-card:nth-child(2) {
+  border-left-color: #0891b2;
+}
+
+.admin-card:nth-child(3) {
+  border-left-color: #0d9488;
+}
+
+.admin-card:nth-child(4) {
+  border-left-color: #2563eb;
+}
+
+.admin-card:nth-child(5) {
+  border-left-color: #7c3aed;
+}
+
+.admin-card:nth-child(6) {
+  border-left-color: #db2777;
+}
+
+.admin-card:nth-child(7) {
+  border-left-color: #f59e0b;
+}
+
+.admin-card:nth-child(8) {
+  border-left-color: #f50b0b;
+}
+
+.card-content h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #0f172a;
+}
+
+.card-content p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: #64748b;
+}
+
+.card-action {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+}
+
+.card-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.card-link:after {
+  content: "→";
+  margin-left: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.admin-card:hover .card-link:after {
+  transform: translateX(5px);
+}
+
+/* ==== MODO OSCURO - INICIO ==== */
+/* Dashboard styles para modo oscuro */
+:host-context(.dark-theme) .admin-dashboard,
+:host-context(.vs-dark) .admin-dashboard {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+:host-context(.dark-theme) .admin-title,
+:host-context(.vs-dark) .admin-title {
+  color: #ffffff;
+}
+
+:host-context(.dark-theme) .admin-subtitle,
+:host-context(.vs-dark) .admin-subtitle {
+  color: #a0a0a0;
+}
+
+/* Stats cards para modo oscuro */
+:host-context(.dark-theme) .stat-card,
+:host-context(.vs-dark) .stat-card {
+  background-color: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:host-context(.dark-theme) .stat-card:hover,
+:host-context(.vs-dark) .stat-card:hover {
+  background-color: #252525;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+:host-context(.dark-theme) .stat-content h3,
+:host-context(.vs-dark) .stat-content h3 {
+  color: #a0a0a0;
+}
+
+:host-context(.dark-theme) .stat-value,
+:host-context(.vs-dark) .stat-value {
+  color: #ffffff !important;
+}
+
+/* Ajuste para iconos en modo oscuro */
+:host-context(.dark-theme) .stat-icon,
+:host-context(.vs-dark) .stat-icon {
+  background-color: rgba(79, 70, 229, 0.2);
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+}
+
+:host-context(.dark-theme) .stat-icon svg,
+:host-context(.vs-dark) .stat-icon svg {
+  stroke: #a0a0ff;
+}
+
+/* Admin cards para modo oscuro */
+:host-context(.dark-theme) .admin-card,
+:host-context(.vs-dark) .admin-card {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:host-context(.dark-theme) .admin-card:hover,
+:host-context(.vs-dark) .admin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background-color: #252525;
+}
+
+/* Card content para modo oscuro */
+:host-context(.dark-theme) .card-content h2,
+:host-context(.vs-dark) .card-content h2 {
+  color: #ffffff;
+}
+
+:host-context(.dark-theme) .card-content p,
+:host-context(.vs-dark) .card-content p {
+  color: #a0a0a0;
+}
+
+/* Card link para modo oscuro */
+:host-context(.dark-theme) .card-link,
+:host-context(.vs-dark) .card-link {
+  color: #7b74ff;
+}
+
+:host-context(.dark-theme) .admin-card:hover .card-link,
+:host-context(.vs-dark) .admin-card:hover .card-link {
+  color: #9f9aff;
+}
+
+/* Mejorando los iconos de card para modo oscuro */
+:host-context(.dark-theme) .user-icon,
+:host-context(.vs-dark) .user-icon {
+  background-color: rgba(79, 70, 229, 0.2);
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+}
+
+:host-context(.dark-theme) .user-icon svg,
+:host-context(.vs-dark) .user-icon svg {
+  stroke: #a0a0ff;
+}
+
+:host-context(.dark-theme) .category-icon,
+:host-context(.vs-dark) .category-icon {
+  background-color: rgba(8, 145, 178, 0.2);
+  box-shadow: 0 0 15px rgba(8, 145, 178, 0.3);
+}
+
+:host-context(.dark-theme) .category-icon svg,
+:host-context(.vs-dark) .category-icon svg {
+  stroke: #7dd3fc;
+}
+
+:host-context(.dark-theme) .subcategory-icon,
+:host-context(.vs-dark) .subcategory-icon {
+  background-color: rgba(13, 148, 136, 0.2);
+  box-shadow: 0 0 15px rgba(13, 148, 136, 0.3);
+}
+
+:host-context(.dark-theme) .subcategory-icon svg,
+:host-context(.vs-dark) .subcategory-icon svg {
+  stroke: #5eead4;
+}
+
+:host-context(.dark-theme) .product-icon,
+:host-context(.vs-dark) .product-icon {
+  background-color: rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+}
+
+:host-context(.dark-theme) .product-icon svg,
+:host-context(.vs-dark) .product-icon svg {
+  stroke: #93c5fd;
+}
+
+:host-context(.dark-theme) .condition-icon,
+:host-context(.vs-dark) .condition-icon {
+  background-color: rgba(124, 58, 237, 0.2);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+}
+
+:host-context(.dark-theme) .condition-icon svg,
+:host-context(.vs-dark) .condition-icon svg {
+  stroke: #c4b5fd;
+}
+
+:host-context(.dark-theme) .auction-icon,
+:host-context(.vs-dark) .auction-icon {
+  background-color: rgba(219, 39, 119, 0.2);
+  box-shadow: 0 0 15px rgba(219, 39, 119, 0.3);
+}
+
+:host-context(.dark-theme) .auction-icon svg,
+:host-context(.vs-dark) .auction-icon svg {
+  stroke: #fbcfe8;
+}
+
+:host-context(.dark-theme) .message-icon,
+:host-context(.vs-dark) .message-icon {
+  background-color: rgba(245, 158, 11, 0.2);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+}
+
+:host-context(.dark-theme) .message-icon svg,
+:host-context(.vs-dark) .message-icon svg {
+  stroke: #fcd34d;
+}
+
+/* Mejorando los bordes de color para las tarjetas en modo oscuro */
+:host-context(.dark-theme) .admin-card:nth-child(1),
+:host-context(.vs-dark) .admin-card:nth-child(1) {
+  border-left-color: #6366f1;
+}
+
+:host-context(.dark-theme) .admin-card:nth-child(2),
+:host-context(.vs-dark) .admin-card:nth-child(2) {
+  border-left-color: #0ea5e9;
+}
+
+:host-context(.dark-theme) .admin-card:nth-child(3),
+:host-context(.vs-dark) .admin-card:nth-child(3) {
+  border-left-color: #14b8a6;
+}
+
+:host-context(.dark-theme) .admin-card:nth-child(4),
+:host-context(.vs-dark) .admin-card:nth-child(4) {
+  border-left-color: #3b82f6;
+}
+
+:host-context(.dark-theme) .admin-card:nth-child(5),
+:host-context(.vs-dark) .admin-card:nth-child(5) {
+  border-left-color: #8b5cf6;
+}
+
+:host-context(.dark-theme) .admin-card:nth-child(6),
+:host-context(.vs-dark) .admin-card:nth-child(6) {
+  border-left-color: #ec4899;
+}
+
+:host-context(.dark-theme) .admin-card:nth-child(7),
+:host-context(.vs-dark) .admin-card:nth-child(7) {
+  border-left-color: #f59e0b;
+}
+
+:host-context(.dark-theme) .admin-card:nth-child(8),
+:host-context(.vs-dark) .admin-card:nth-child(8) {
+  border-left-color: #f50b0b;
+}
+
+:host-context(.dark-theme) .form-icon,
+:host-context(.vs-dark) .form-icon {
+  background-color: rgba(245, 11, 11, 0.2);
+  box-shadow: 0 0 15px rgba(245, 11, 11, 0.3);
+}
+
+:host-context(.dark-theme) .form-icon svg,
+:host-context(.vs-dark) .form-icon svg {
+  stroke: #fca5a5; /* Un tono rojizo claro similar al tema del icono */
+}
+
+/* Mejorando el efecto hover para las tarjetas en modo oscuro */
+:host-context(.dark-theme) .admin-card::before,
+:host-context(.vs-dark) .admin-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent);
+  transition: height 0.3s ease-out;
+  z-index: 0;
+  pointer-events: none;
+}
+
+:host-context(.dark-theme) .admin-card:hover::before,
+:host-context(.vs-dark) .admin-card:hover::before {
+  height: 100%;
+}
+
+:host-context(.dark-theme) .card-icon,
+:host-context(.vs-dark) .card-icon,
+:host-context(.dark-theme) .card-content,
+:host-context(.vs-dark) .card-content,
+:host-context(.dark-theme) .card-action,
+:host-context(.vs-dark) .card-action {
+  position: relative;
+  z-index: 1;
+}
+
+/* Efecto de brillo alrededor de los iconos para un aspecto más premium */
+:host-context(.dark-theme) .card-icon::after,
+:host-context(.vs-dark) .card-icon::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 16px;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+:host-context(.dark-theme) .admin-card:hover .card-icon::after,
+:host-context(.vs-dark) .admin-card:hover .card-icon::after {
+  opacity: 1;
+}
+
+/* Mejora específica para las stats en modo oscuro basada en las clases usadas en el HTML */
+:host-context(.dark-theme) .stat-card.light\:bg-gray.dark\:bg-black,
+:host-context(.vs-dark) .stat-card.light\:bg-gray.dark\:bg-black {
+  background-color: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+:host-context(.dark-theme) .stat-icon.light\:bg-indigo-600.dark\:bg-indigo-800,
+:host-context(.vs-dark) .stat-icon.light\:bg-indigo-600.dark\:bg-indigo-800 {
+  background-color: #4338ca;
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+}
+
+:host-context(.dark-theme) .stat-content.light\:text-gray-600.dark\:text-white h3,
+:host-context(.vs-dark) .stat-content.light\:text-gray-600.dark\:text-white h3 {
+  color: #a0a0a0;
+}
+
+:host-context(.dark-theme) .stat-value.light\:text-\[\#1e293b\].dark\:text-white,
+:host-context(.vs-dark) .stat-value.light\:text-\[\#1e293b\].dark\:text-white {
+  color: #ffffff;
+}
+
+/* Mejora de transiciones para el modo oscuro */
+:host-context(.dark-theme) .admin-card,
+:host-context(.vs-dark) .admin-card,
+:host-context(.dark-theme) .stat-card,
+:host-context(.vs-dark) .stat-card,
+:host-context(.dark-theme) .card-icon,
+:host-context(.vs-dark) .card-icon {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+:host-context(.dark-theme) .card-link,
+:host-context(.vs-dark) .card-link {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Ajuste para los títulos de tarjeta en modo oscuro */
+:host-context(.dark-theme) .card-content h2.light\:text-black.dark\:text-white,
+:host-context(.vs-dark) .card-content h2.light\:text-black.dark\:text-white {
+  color: #ffffff;
+}
+
+/* ==== MODO OSCURO - FIN ==== */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .admin-title {
+    font-size: 1.875rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-card {
+    padding: 1.25rem;
+  }
+}

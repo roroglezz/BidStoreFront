@@ -1,0 +1,409 @@
+/* Clamp text to specific lines */
+.line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Aspect ratio container for images */
+.aspect-w-16 {
+    position: relative;
+    padding-bottom: 56.25%;
+}
+
+.aspect-w-16>img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+}
+
+/* Pulsing animation for urgent auctions */
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Focus styles for better accessibility */
+button:focus,
+a:focus,
+select:focus,
+input:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+input:focus-visible {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4);
+}
+
+.auction-timer {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 20;
+}
+
+.auction-timer span {
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Clases específicas para cada estado del tiempo */
+.bg-red-100.text-red-800 {
+    background-color: rgba(254, 226, 226, 0.9);
+    color: #991b1b;
+    animation: pulse-soft 2s infinite;
+}
+
+.bg-orange-100.text-orange-800 {
+    background-color: rgba(255, 237, 213, 0.9);
+    color: #9a3412;
+}
+
+.bg-green-100.text-green-800 {
+    background-color: rgba(220, 252, 231, 0.9);
+    color: #166534;
+}
+
+.bg-gray-100.text-gray-800 {
+    background-color: rgba(243, 244, 246, 0.9);
+    color: #1f2937;
+}
+
+/* Animación de pulso más suave para urgentes */
+@keyframes pulse-soft {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.95;
+        transform: scale(1.05);
+    }
+}
+
+/* Asegúrate de que las tarjetas tengan posición relativa */
+.grid > div {
+    position: relative;
+}
+
+/* Mejora la legibilidad del timer en imágenes claras */
+.auction-timer span {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Improve clickable areas on mobile */
+@media (max-width: 640px) {
+    button,
+    a.block {
+        padding: 0.5rem;
+    }
+
+    .grid {
+        gap: 1rem;
+    }
+}
+
+/* Hover effects for cards */
+.group:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s;
+}
+
+/* Improve image loading states */
+img {
+    background-color: #f3f4f6;
+    min-height: 10rem;
+}
+
+/* ==== MODO OSCURO - INICIO ==== */
+/* Fondo principal */
+:host-context(.dark-theme) .bg-white,
+:host-context(.vs-dark) .bg-white {
+    background-color: #121212 !important;
+}
+
+:host-context(.dark-theme) .bg-gray-50,
+:host-context(.vs-dark) .bg-gray-50 {
+    background-color: #1a1a1a !important;
+}
+
+:host-context(.dark-theme) .bg-gray-100,
+:host-context(.vs-dark) .bg-gray-100 {
+    background-color: #252525 !important;
+}
+
+/* Textos */
+:host-context(.dark-theme) .text-gray-900,
+:host-context(.vs-dark) .text-gray-900 {
+    color: #e0e0e0 !important;
+}
+
+:host-context(.dark-theme) .text-gray-800,
+:host-context(.vs-dark) .text-gray-800 {
+    color: #d0d0d0 !important;
+}
+
+:host-context(.dark-theme) .text-gray-700,
+:host-context(.vs-dark) .text-gray-700 {
+    color: #c0c0c0 !important;
+}
+
+:host-context(.dark-theme) .text-gray-600,
+:host-context(.vs-dark) .text-gray-600 {
+    color: #a0a0a0 !important;
+}
+
+:host-context(.dark-theme) .text-gray-500,
+:host-context(.vs-dark) .text-gray-500 {
+    color: #909090 !important;
+}
+
+:host-context(.dark-theme) .text-gray-400,
+:host-context(.vs-dark) .text-gray-400 {
+    color: #808080 !important;
+}
+
+/* Bordes */
+:host-context(.dark-theme) .border,
+:host-context(.vs-dark) .border,
+:host-context(.dark-theme) .border-gray-200,
+:host-context(.vs-dark) .border-gray-200 {
+    border-color: #333333 !important;
+}
+
+:host-context(.dark-theme) .divide-gray-200 > *,
+:host-context(.vs-dark) .divide-gray-200 > * {
+    border-color: #333333 !important;
+}
+
+/* Tarjetas de subasta */
+:host-context(.dark-theme) .group,
+:host-context(.vs-dark) .group {
+    background-color: #1e1e1e !important;
+    border-color: #333333 !important;
+}
+
+:host-context(.dark-theme) .group:hover,
+:host-context(.vs-dark) .group:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Botones */
+:host-context(.dark-theme) .bg-indigo-600,
+:host-context(.vs-dark) .bg-indigo-600 {
+    background-color: #4f46e5 !important;
+}
+
+:host-context(.dark-theme) .bg-indigo-600:hover,
+:host-context(.vs-dark) .bg-indigo-600:hover {
+    background-color: #4338ca !important;
+}
+
+:host-context(.dark-theme) .bg-gray-200,
+:host-context(.vs-dark) .bg-gray-200 {
+    background-color: #2a2a2a !important;
+}
+
+:host-context(.dark-theme) .bg-gray-200:hover,
+:host-context(.vs-dark) .bg-gray-200:hover {
+    background-color: #333333 !important;
+}
+
+/* Badges y estados de subasta */
+:host-context(.dark-theme) .bg-red-100.text-red-800,
+:host-context(.vs-dark) .bg-red-100.text-red-800 {
+    background-color: rgba(127, 29, 29, 0.4) !important;
+    color: #fca5a5 !important;
+    border: 1px solid rgba(248, 113, 113, 0.3) !important;
+}
+
+:host-context(.dark-theme) .bg-orange-100.text-orange-800,
+:host-context(.vs-dark) .bg-orange-100.text-orange-800 {
+    background-color: rgba(124, 45, 18, 0.4) !important;
+    color: #fdba74 !important;
+    border: 1px solid rgba(251, 146, 60, 0.3) !important;
+}
+
+:host-context(.dark-theme) .bg-green-100.text-green-800,
+:host-context(.vs-dark) .bg-green-100.text-green-800 {
+    background-color: rgba(6, 78, 59, 0.4) !important;
+    color: #6ee7b7 !important;
+    border: 1px solid rgba(52, 211, 153, 0.3) !important;
+}
+
+:host-context(.dark-theme) .bg-gray-100.text-gray-800,
+:host-context(.vs-dark) .bg-gray-100.text-gray-800 {
+    background-color: rgba(30, 41, 59, 0.4) !important;
+    color: #e0e0e0 !important;
+    border: 1px solid rgba(148, 163, 184, 0.3) !important;
+}
+
+/* Mejora de la visualización del timer */
+:host-context(.dark-theme) .auction-timer span,
+:host-context(.vs-dark) .auction-timer span {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Filtros */
+:host-context(.dark-theme) .bg-white.shadow,
+:host-context(.vs-dark) .bg-white.shadow {
+    background-color: #1e1e1e !important;
+    border: 1px solid #333333 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Corrección para evitar las flechas duplicadas en los selects */
+:host-context(.dark-theme) select,
+:host-context(.vs-dark) select {
+    background-color: #2a2a2a !important;
+    border-color: #333333 !important;
+    color: #e0e0e0 !important;
+    /* Eliminamos la imagen de fondo para que no aparezca duplicada */
+    background-image: none !important;
+    /* Restauramos la flecha nativa del navegador */
+    -webkit-appearance: auto !important;
+    -moz-appearance: auto !important;
+    appearance: auto !important;
+}
+
+:host-context(.dark-theme) input[type="search"],
+:host-context(.vs-dark) input[type="search"] {
+    background-color: #2a2a2a !important;
+    border-color: #333333 !important;
+    color: #e0e0e0 !important;
+}
+
+/* Mejoras para estados vacíos */
+:host-context(.dark-theme) .empty-state,
+:host-context(.vs-dark) .empty-state {
+    color: #a0a0a0 !important;
+}
+
+:host-context(.dark-theme) .empty-state svg,
+:host-context(.vs-dark) .empty-state svg {
+    stroke: #555555 !important;
+}
+
+/* Placeholder de imágenes */
+:host-context(.dark-theme) img,
+:host-context(.vs-dark) img {
+    background-color: #2a2a2a !important;
+}
+
+/* Precios y etiquetas importantes */
+:host-context(.dark-theme) .text-indigo-600,
+:host-context(.vs-dark) .text-indigo-600 {
+    color: #a5a0ff !important;
+}
+
+:host-context(.dark-theme) .text-green-600,
+:host-context(.vs-dark) .text-green-600 {
+    color: #34d399 !important;
+}
+
+:host-context(.dark-theme) .text-red-600,
+:host-context(.vs-dark) .text-red-600 {
+    color: #f87171 !important;
+}
+
+/* Paginación */
+:host-context(.dark-theme) pagination-controls ::ng-deep .ngx-pagination a,
+:host-context(.vs-dark) pagination-controls ::ng-deep .ngx-pagination a,
+:host-context(.dark-theme) pagination-controls ::ng-deep .ngx-pagination button,
+:host-context(.vs-dark) pagination-controls ::ng-deep .ngx-pagination button {
+    background-color: #252525 !important;
+    color: #e0e0e0 !important;
+    border-color: #333333 !important;
+}
+
+:host-context(.dark-theme) pagination-controls ::ng-deep .ngx-pagination a:hover,
+:host-context(.vs-dark) pagination-controls ::ng-deep .ngx-pagination a:hover,
+:host-context(.dark-theme) pagination-controls ::ng-deep .ngx-pagination button:hover,
+:host-context(.vs-dark) pagination-controls ::ng-deep .ngx-pagination button:hover {
+    background-color: #333333 !important;
+}
+
+:host-context(.dark-theme) pagination-controls ::ng-deep .ngx-pagination .current,
+:host-context(.vs-dark) pagination-controls ::ng-deep .ngx-pagination .current {
+    background-color: #4f46e5 !important;
+    color: #ffffff !important;
+}
+
+/* Mejoras visuales para el modo oscuro */
+:host-context(.dark-theme) .shadow,
+:host-context(.vs-dark) .shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+:host-context(.dark-theme) .group,
+:host-context(.vs-dark) .group {
+    transition: all 0.3s ease !important;
+}
+
+:host-context(.dark-theme) .group:hover,
+:host-context(.vs-dark) .group:hover {
+    transform: translateY(-3px) !important;
+}
+
+/* Efectos especiales para destacar items */
+:host-context(.dark-theme) .highlighted-auction,
+:host-context(.vs-dark) .highlighted-auction {
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.3) !important;
+}
+
+/* Transiciones más suaves */
+:host-context(.dark-theme) *,
+:host-context(.vs-dark) * {
+    transition-duration: 0.2s !important;
+}
+
+/* Animación de pulso modificada para modo oscuro */
+@keyframes pulse-soft-dark {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 10px rgba(79, 70, 229, 0.2);
+    }
+    50% {
+        opacity: 0.95;
+        box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+    }
+}
+
+:host-context(.dark-theme) .bg-red-100.text-red-800,
+:host-context(.vs-dark) .bg-red-100.text-red-800 {
+    animation: pulse-soft-dark 2s infinite !important;
+}
+
+/* Sombra sutil en las tarjetas para dar sensación de profundidad */
+:host-context(.dark-theme) .rounded-lg,
+:host-context(.vs-dark) .rounded-lg {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+/* ==== MODO OSCURO - FIN ==== */

@@ -1,0 +1,254 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="!loading" class="bg-gray-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto profile-grid">
+        <!-- Panel principal del perfil -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 h-fit"
+            [class.ring-2]="isEditing" [class.ring-indigo-500]="isEditing">
+
+            <!-- Cabecera con avatar -->
+            <div class="relative">
+                <!-- Banner de fondo -->
+                <div class="h-32 bg-gradient-to-r from-indigo-600 to-purple-600"></div>
+
+                <!-- Avatar y estado de edición -->
+                <div class="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
+                    <div class="relative">
+                        <img src="https://ui-avatars.com/api/?name={{user.name}}+{{user.last_name}}&background=random&size=128"
+                            alt="Profile avatar" class="h-32 w-32 rounded-full border-4 border-white shadow-md" />
+                        <span *ngIf="isEditing"
+                            class="absolute top-0 right-0 h-6 w-6 bg-indigo-500 rounded-full border-2 border-white flex items-center justify-center"
+                            aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-white" viewBox="0 0 20 20"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información principal -->
+            <div class="pt-20 px-6 pb-6">
+                <div class="text-center mb-6">
+                    <h1 class="text-2xl font-bold text-gray-900">
+                        {{ user.name }} {{ user.last_name }}
+                    </h1>
+                    <p class="text-indigo-600 font-medium">
+                        {{ user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase() }}
+                    </p>
+                </div>
+
+                <!-- Sección de balance destacado -->
+                <div class="bg-indigo-50 rounded-lg p-4 mb-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <p class="text-sm text-indigo-600 font-medium">Available Balance</p>
+                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Active
+                            Seller</span>
+                    </div>
+                    <div class="flex justify-center items-baseline">
+                        <span class="text-3xl font-bold text-indigo-800">{{ user.balance }}</span>
+                        <span class="text-indigo-700 text-lg ml-1">€</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mt-4">
+                        <button routerLink="/payment-gateway" type="button"
+                            class="inline-flex justify-center items-center px-4 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-medium rounded-lg hover:from-indigo-700 hover:to-indigo-800 focus:ring-4 focus:ring-indigo-300 focus:outline-none transition-all duration-300 shadow-md"
+                            aria-label="Add money to your account using Visa">
+                            <svg aria-hidden="true" class="w-10 h-3 mr-2" viewBox="0 0 660 203" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M233.003 199.762L266.362 4.002H319.72L286.336 199.762H233.003V199.762ZM479.113 8.222C468.544 4.256 451.978 0 431.292 0C378.566 0 341.429 26.551 341.111 64.604C340.814 92.733 367.626 108.426 387.865 117.789C408.636 127.387 415.617 133.505 415.517 142.072C415.384 155.195 398.931 161.187 383.593 161.187C362.238 161.187 350.892 158.22 333.368 150.914L326.49 147.803L319.003 191.625C331.466 197.092 354.511 201.824 378.441 202.07C434.531 202.07 470.943 175.822 471.357 135.185C471.556 112.915 457.341 95.97 426.556 81.997C407.906 72.941 396.484 66.898 396.605 57.728C396.605 49.591 406.273 40.89 427.165 40.89C444.611 40.619 457.253 44.424 467.101 48.39L471.882 50.649L479.113 8.222V8.222ZM616.423 3.99899H575.193C562.421 3.99899 552.861 7.485 547.253 20.233L468.008 199.633H524.039C524.039 199.633 533.198 175.512 535.27 170.215C541.393 170.215 595.825 170.299 603.606 170.299C605.202 177.153 610.098 199.633 610.098 199.633H659.61L616.423 3.993V3.99899ZM551.006 130.409C555.42 119.13 572.266 75.685 572.266 75.685C571.952 76.206 576.647 64.351 579.34 57.001L582.946 73.879C582.946 73.879 593.163 120.608 595.299 130.406H551.006V130.409V130.409ZM187.706 3.99899L135.467 137.499L129.902 110.37C120.176 79.096 89.8774 45.213 56.0044 28.25L103.771 199.45L160.226 199.387L244.23 3.99699L187.706 3.996"
+                                    fill="#ffffff" />
+                                <path
+                                    d="M86.723 3.99219H0.682003L0 8.06519C66.939 24.2692 111.23 63.4282 129.62 110.485L110.911 20.5252C107.682 8.12918 98.314 4.42918 86.725 3.99718"
+                                    fill="#ffffff" />
+                            </svg>
+                            <span class="text-sm">Add Money</span>
+                        </button>
+
+                        <button routerLink="/uploadProduct" type="button"
+                            class="inline-flex justify-center items-center px-4 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-medium rounded-lg hover:from-emerald-600 hover:to-teal-700 focus:ring-4 focus:ring-emerald-300 focus:outline-none transition-all duration-300 shadow-md"
+                            aria-label="Upload a new product to sell">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="text-sm">Sell Product</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Campos del perfil -->
+                <form class="space-y-5" aria-labelledby="profile-form-heading">
+                    <h2 id="profile-form-heading" class="sr-only">Profile Information</h2>
+
+                    <!-- Campo: Name -->
+                    <div class="relative">
+                        <label for="name-field" class="block text-sm font-medium text-gray-700 mb-1">
+                            Name
+                        </label>
+                        <div class="relative">
+                            <input id="name-field" [(ngModel)]="user.name" [disabled]="!isEditing" name="name"
+                                type="text" class="w-full py-2.5 px-4 rounded-lg border"
+                                [class.border-gray-300]="!isEditing" [class.bg-gray-50]="!isEditing"
+                                [class.border-indigo-300]="isEditing" [class.bg-white]="isEditing"
+                                [class.ring-2]="isEditing" [class.ring-indigo-100]="isEditing"
+                                [class.focus:ring-indigo-500]="isEditing" [class.focus:border-indigo-500]="isEditing"
+                                [class.shadow-sm]="isEditing" [attr.aria-readonly]="!isEditing" />
+                            <div *ngIf="isEditing"
+                                class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500"
+                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campo: Last Name -->
+                    <div class="relative">
+                        <label for="last-name-field" class="block text-sm font-medium text-gray-700 mb-1">
+                            Last Name
+                        </label>
+                        <div class="relative">
+                            <input id="last-name-field" [(ngModel)]="user.last_name" [disabled]="!isEditing"
+                                name="last_name" type="text" class="w-full py-2.5 px-4 rounded-lg border"
+                                [class.border-gray-300]="!isEditing" [class.bg-gray-50]="!isEditing"
+                                [class.border-indigo-300]="isEditing" [class.bg-white]="isEditing"
+                                [class.ring-2]="isEditing" [class.ring-indigo-100]="isEditing"
+                                [class.focus:ring-indigo-500]="isEditing" [class.focus:border-indigo-500]="isEditing"
+                                [class.shadow-sm]="isEditing" [attr.aria-readonly]="!isEditing" />
+                            <div *ngIf="isEditing"
+                                class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500"
+                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Campo: Email -->
+                    <div class="relative">
+                        <label for="email-field" class="block text-sm font-medium text-gray-700 mb-1">
+                            Email
+                        </label>
+                        <div class="relative">
+                            <input id="email-field" [(ngModel)]="user.email" [disabled]="!isEditing" name="email"
+                                type="email" class="w-full py-2.5 px-4 rounded-lg border"
+                                [class.border-gray-300]="!isEditing" [class.bg-gray-50]="!isEditing"
+                                [class.border-indigo-300]="isEditing" [class.bg-white]="isEditing"
+                                [class.ring-2]="isEditing" [class.ring-indigo-100]="isEditing"
+                                [class.focus:ring-indigo-500]="isEditing" [class.focus:border-indigo-500]="isEditing"
+                                [class.shadow-sm]="isEditing" [attr.aria-readonly]="!isEditing" />
+                            <div *ngIf="isEditing"
+                                class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500"
+                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Pie con botones de acción -->
+            <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-between">
+                <button *ngIf="!isEditing" (click)="enableEditing()" type="button"
+                    class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
+                    aria-label="Edit your profile information">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="-ml-0.5 mr-2 h-4 w-4" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                    </svg>
+                    Edit Profile
+                </button>
+
+                <div *ngIf="isEditing" class="flex gap-3">
+                    <button (click)="cancelEditing()" type="button"
+                        class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
+                        aria-label="Cancel editing">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="-ml-0.5 mr-2 h-4 w-4" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Cancel
+                    </button>
+                    <button (click)="saveUserData()" type="button"
+                        class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
+                        aria-label="Save profile changes">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="-ml-0.5 mr-2 h-4 w-4" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de información adicional -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden h-fit">
+            <div class="px-6 py-5 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">Account Status</h2>
+            </div>
+            <div class="px-6 py-5">
+                <dl class="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500">Member since</dt>
+                        <dd class="mt-1 text-sm text-gray-900">{{ user.created_at | date:'medium' }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500">Account type</dt>
+                        <dd class="mt-1 text-sm text-gray-900">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+                                [ngClass]="{
+                                  'bg-green-100 text-green-800': user.role === 'user',
+                                  'bg-purple-100 text-purple-800': user.role === 'admin'
+                                }">
+                                {{ user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase() }}
+                            </span>
+                        </dd>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <dt class="text-sm font-medium text-gray-500">Account verification</dt>
+                        <dd class="mt-1 text-sm text-gray-900">
+                            <div class="flex items-center">
+                                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span class="ml-2">Email verified</span>
+                            </div>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-action-button">
+        <a routerLink="/uploadProduct" class="action-button add-product-button" title="Upload New Product">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                    clip-rule="evenodd" />
+            </svg>
+        </a>
+    </div>
+</div>

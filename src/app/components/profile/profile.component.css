@@ -1,0 +1,439 @@
+/* Variables globales */
+:root {
+    --primary-color: #4f46e5;
+    --primary-dark: #4338ca;
+    --primary-light: #eef2ff;
+    --secondary-color: #8b5cf6;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-light: #94a3b8;
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-card: #ffffff;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --border-radius-sm: 0.375rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.75rem;
+    --border-radius-xl: 1rem;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* Variables para modo oscuro */
+:host-context(.dark-theme),
+:host-context(.vs-dark) {
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --text-light: #888888;
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-card: #252525;
+    --border-color: #333333;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos generales */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Grid para las tarjetas en horizontal */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* En pantallas medianas y grandes, mostrar tarjetas en horizontal */
+@media (min-width: 1024px) {
+    .profile-grid {
+        grid-template-columns: 3fr 2fr;
+    }
+}
+
+/* Ajuste de altura para tarjetas */
+.h-fit {
+    height: fit-content;
+}
+
+/* Botón de acción flotante */
+.fixed-action-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.add-product-button {
+    background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+    color: white;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 640px) {
+    .fixed-action-button {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .action-button {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+/* Ajuste para el botón flotante en pantallas grandes */
+@media (min-width: 1280px) {
+    .fixed-action-button {
+        right: calc((100vw - 1280px) / 2 + 2rem);
+    }
+}
+
+/* Animaciones y transiciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.profile-grid>div {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Accesibilidad - focus visible */
+button:focus,
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.5);
+}
+
+/* Mejorar la accesibilidad en modo alto contraste */
+@media (forced-colors: active) {
+    .profile-card.editing-mode {
+        outline: 2px solid CanvasText;
+    }
+
+    .action-button,
+    button {
+        border: 1px solid CanvasText;
+    }
+}
+
+/* ==== MODO OSCURO - INICIO ==== */
+/* Fondo de página */
+:host-context(.dark-theme) .bg-gray-50,
+:host-context(.vs-dark) .bg-gray-50 {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Tarjetas principales */
+:host-context(.dark-theme) .bg-white,
+:host-context(.vs-dark) .bg-white {
+    background-color: var(--bg-card) !important;
+}
+
+:host-context(.dark-theme) .shadow-lg,
+:host-context(.vs-dark) .shadow-lg {
+    box-shadow: var(--shadow-md);
+}
+
+/* Cabecera con avatar */
+:host-context(.dark-theme) .border-white,
+:host-context(.vs-dark) .border-white {
+    border-color: var(--bg-card);
+}
+
+/* Texto y colores */
+:host-context(.dark-theme) .text-gray-900,
+:host-context(.vs-dark) .text-gray-900 {
+    color: var(--text-primary) !important;
+}
+
+:host-context(.dark-theme) .text-gray-700,
+:host-context(.vs-dark) .text-gray-700 {
+    color: var(--text-secondary) !important;
+}
+
+:host-context(.dark-theme) .text-gray-500,
+:host-context(.vs-dark) .text-gray-500 {
+    color: var(--text-light) !important;
+}
+
+/* Sección de balance destacado */
+:host-context(.dark-theme) .bg-indigo-50,
+:host-context(.vs-dark) .bg-indigo-50 {
+    background-color: rgba(79, 70, 229, 0.1) !important;
+}
+
+:host-context(.dark-theme) .text-indigo-600,
+:host-context(.vs-dark) .text-indigo-600 {
+    color: #a5a0ff !important;
+}
+
+:host-context(.dark-theme) .text-indigo-800,
+:host-context(.vs-dark) .text-indigo-800,
+:host-context(.dark-theme) .text-indigo-700,
+:host-context(.vs-dark) .text-indigo-700 {
+    color: #c4c0ff !important;
+}
+
+/* Badges de estado */
+:host-context(.dark-theme) .bg-green-100,
+:host-context(.vs-dark) .bg-green-100 {
+    background-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+:host-context(.dark-theme) .text-green-800,
+:host-context(.vs-dark) .text-green-800 {
+    color: #34d399 !important;
+}
+
+:host-context(.dark-theme) .bg-purple-100,
+:host-context(.vs-dark) .bg-purple-100 {
+    background-color: rgba(139, 92, 246, 0.2) !important;
+}
+
+:host-context(.dark-theme) .text-purple-800,
+:host-context(.vs-dark) .text-purple-800 {
+    color: #c4b5fd !important;
+}
+
+/* Campos de formulario */
+:host-context(.dark-theme) .border,
+:host-context(.vs-dark) .border {
+    border-color: var(--border-color);
+}
+
+:host-context(.dark-theme) .border-gray-300,
+:host-context(.vs-dark) .border-gray-300 {
+    border-color: #424242;
+}
+
+:host-context(.dark-theme) .bg-gray-50,
+:host-context(.vs-dark) .bg-gray-50 {
+    background-color: #1e1e1e !important;
+}
+
+:host-context(.dark-theme) .border-indigo-300,
+:host-context(.vs-dark) .border-indigo-300 {
+    border-color: rgba(79, 70, 229, 0.4);
+}
+
+:host-context(.dark-theme) input,
+:host-context(.vs-dark) input {
+    background-color: #2a2a2a !important;
+    color: var(--text-primary) !important;
+}
+
+:host-context(.dark-theme) .ring-indigo-100,
+:host-context(.vs-dark) .ring-indigo-100 {
+    --tw-ring-color: rgba(79, 70, 229, 0.2);
+}
+
+/* Pie de tarjeta */
+:host-context(.dark-theme) .bg-gray-50.border-t,
+:host-context(.vs-dark) .bg-gray-50.border-t {
+    background-color: #1a1a1a !important;
+    border-color: var(--border-color) !important;
+}
+
+:host-context(.dark-theme) .border-gray-200,
+:host-context(.vs-dark) .border-gray-200 {
+    border-color: var(--border-color) !important;
+}
+
+/* Botones */
+:host-context(.dark-theme) .bg-indigo-600,
+:host-context(.vs-dark) .bg-indigo-600 {
+    background-color: #4f46e5;
+}
+
+:host-context(.dark-theme) .bg-indigo-600:hover,
+:host-context(.vs-dark) .bg-indigo-600:hover {
+    background-color: #4338ca;
+}
+
+:host-context(.dark-theme) .border-gray-300,
+:host-context(.vs-dark) .border-gray-300 {
+    border-color: #424242 !important;
+}
+
+/* Fix para el botón de cancelar en modo oscuro */
+:host-context(.dark-theme) .bg-white.hover\:bg-gray-50,
+:host-context(.vs-dark) .bg-white.hover\:bg-gray-50 {
+    background-color: #2a2a2a !important;
+    color: #e0e0e0 !important;
+}
+
+:host-context(.dark-theme) .bg-white.hover\:bg-gray-50:hover,
+:host-context(.vs-dark) .bg-white.hover\:bg-gray-50:hover {
+    background-color: #333333 !important;
+}
+
+:host-context(.dark-theme) .focus\:ring-offset-2,
+:host-context(.vs-dark) .focus\:ring-offset-2 {
+    --tw-ring-offset-color: #1a1a1a;
+}
+
+/* Botones de gradiente */
+:host-context(.dark-theme) .bg-gradient-to-r.from-indigo-600.to-indigo-700,
+:host-context(.vs-dark) .bg-gradient-to-r.from-indigo-600.to-indigo-700 {
+    background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+}
+
+:host-context(.dark-theme) .bg-gradient-to-r.from-emerald-500.to-teal-600,
+:host-context(.vs-dark) .bg-gradient-to-r.from-emerald-500.to-teal-600 {
+    background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Lista de información adicional */
+:host-context(.dark-theme) dt,
+:host-context(.vs-dark) dt {
+    color: var(--text-light) !important;
+}
+
+:host-context(.dark-theme) dd,
+:host-context(.vs-dark) dd {
+    color: var(--text-primary) !important;
+}
+
+/* Iconos de verificación */
+:host-context(.dark-theme) .text-green-500,
+:host-context(.vs-dark) .text-green-500 {
+    color: #34d399 !important;
+}
+
+/* Efecto de foco más visible en modo oscuro */
+:host-context(.dark-theme) button:focus,
+:host-context(.vs-dark) button:focus,
+:host-context(.dark-theme) input:focus,
+:host-context(.vs-dark) input:focus {
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4);
+}
+
+/* Efecto hover en las tarjetas para modo oscuro */
+:host-context(.dark-theme) .profile-grid>div:hover,
+:host-context(.vs-dark) .profile-grid>div:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Iconos en modo oscuro */
+:host-context(.dark-theme) .text-indigo-500,
+:host-context(.vs-dark) .text-indigo-500 {
+    color: #6366f1 !important;
+}
+
+/* Botón de agregar producto flotante */
+:host-context(.dark-theme) .add-product-button,
+:host-context(.vs-dark) .add-product-button {
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+}
+
+:host-context(.dark-theme) .add-product-button:hover,
+:host-context(.vs-dark) .add-product-button:hover {
+    box-shadow: 0 0 25px rgba(79, 70, 229, 0.6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Anillo de edición en modo oscuro */
+:host-context(.dark-theme) .ring-2.ring-indigo-500,
+:host-context(.vs-dark) .ring-2.ring-indigo-500 {
+    --tw-ring-color: rgba(99, 102, 241, 0.6);
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.2);
+}
+
+/* Estado de verificación de cuenta */
+:host-context(.dark-theme) .text-green-500+span,
+:host-context(.vs-dark) .text-green-500+span {
+    color: #34d399 !important;
+}
+
+/* Fixes específicos para colores persistentes en elementos inline */
+:host-context(.dark-theme) .bg-white,
+:host-context(.vs-dark) .bg-white {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+:host-context(.dark-theme) .border-b.border-gray-200,
+:host-context(.vs-dark) .border-b.border-gray-200 {
+    border-color: var(--border-color) !important;
+}
+
+:host-context(.dark-theme) .text-lg.font-medium.text-gray-900,
+:host-context(.vs-dark) .text-lg.font-medium.text-gray-900 {
+    color: var(--text-primary) !important;
+}
+
+:host-context(.dark-theme) .text-sm.text-gray-900,
+:host-context(.vs-dark) .text-sm.text-gray-900 {
+    color: var(--text-primary) !important;
+}
+
+/* Fix para textos que puedan quedar en colores claros */
+:host-context(.dark-theme) [class*="text-gray-"],
+:host-context(.vs-dark) [class*="text-gray-"] {
+    color: var(--text-primary) !important;
+}
+
+/* Fix para textos específicos como Member since y Account type */
+:host-context(.dark-theme) .mt-1.text-sm.text-gray-900,
+:host-context(.vs-dark) .mt-1.text-sm.text-gray-900 {
+    color: var(--text-primary) !important;
+}
+
+/* Forzar colores oscuros para bloques específicos que persisten con fondo claro */
+:host-context(.dark-theme) .px-6.py-5,
+:host-context(.vs-dark) .px-6.py-5 {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Fix para el pie con botones de acción */
+:host-context(.dark-theme) .px-6.py-4.bg-gray-50.border-t,
+:host-context(.vs-dark) .px-6.py-4.bg-gray-50.border-t {
+    background-color: #1a1a1a !important;
+}
+
+/* ==== MODO OSCURO - FIN ==== */

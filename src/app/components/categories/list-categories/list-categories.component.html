@@ -1,0 +1,46 @@
+<!-- Mostrar la pantalla de carga mientras `loading` sea true -->
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="!loading"
+    class="categories-container-wrapper min-h-screen light:bg-gradient-to-b light:from-black-50 light:to-black-100 dark:from-gray-900 dark:to-black py-16 px-4 mt-8">
+    <!-- Header section with animated title -->
+    <div class="max-w-6xl mx-auto mb-12 category-header">
+        <h1
+            class="text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r light:from-blue-600 light:to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+            Discover Categories
+        </h1>
+        <p class="text-center light:text-gray-100 mt-2 max-w-xl mx-auto">
+            Explore our diverse collection of auction categories and find your next treasure
+        </p>
+    </div>
+
+    <!-- Category grid with improved card design -->
+    <div class="categories-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let category of categories"
+            class="category-card group transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 light:bg-gray-700 dark:bg-gray-900">
+            <!-- Image with overlay on hover -->
+            <div class="image-container">
+                <img class="w-full h-full object-cover"
+                    [src]="'http://localhost:8000/storage/'+ category.image_url" alt="Category image" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <h3 class="text-white font-bold text-xl p-4">{{ category.name }}</h3>
+                </div>
+            </div>
+            <!-- Card content -->
+            <div class="card-content p-5">
+                <h5 class="mb-2 text-xl font-bold light:text-white dark:text-white">{{ category.name }}</h5>
+                <p class="mb-4 light:text-gray-900 line-clamp-2">{{ category.description }}</p>
+                <a [routerLink]="['/category', category.id]"
+                    class="explore-btn inline-flex items-center px-4 py-2 text-sm font-medium text-white light:bg-indigo-600 light:hover:bg-indigo-700 light:focus:ring-4 light:focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-4 dark:focus:ring-indigo-300 rounded-lg transition-colors duration-300">
+                    Explore
+                    <svg class="w-4 h-4 ms-2 group-hover:translate-x-1 transition-transform duration-300"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="!loading" class="max-w-7xl mx-auto px-4 sm:px-6 light:bg-white dark:bg-gray-900 pb-16">
+    <!-- Category Header Section -->
+    <div class="relative h-80 rounded-2xl overflow-hidden mb-12 light:shadow-md dark:shadow-xl">
+        <div class="absolute inset-0">
+            <img *ngIf="category?.image_url" [src]="'http://localhost:8000/storage/' + category.image_url"
+                alt="{{ category.name }}"
+                class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+            <div class="absolute inset-0 light:bg-gradient-to-r light:from-black/70 light:via-black/40 light:to-black/10 
+                        dark:bg-gradient-to-r dark:from-black/85 dark:via-black/60 dark:to-black/30"></div>
+        </div>
+        <div class="relative h-full flex flex-col justify-center px-16 text-white max-w-3xl">
+            <h1 class="text-4xl font-bold mb-4 leading-tight light:text-white dark:text-white drop-shadow-sm">{{
+                category?.name }}</h1>
+            <p class="text-lg light:text-gray-100 dark:text-gray-200 max-w-xl">{{ category?.description }}</p>
+        </div>
+    </div>
+
+    <!-- Search and Filter Section -->
+    <div class="mb-12">
+        <div
+            class="max-w-3xl mx-auto p-8 light:bg-white dark:bg-gray-800 rounded-2xl light:shadow-md dark:shadow-xl transition-shadow duration-300">
+            <h2 class="text-center text-2xl font-bold light:text-indigo-600 dark:text-indigo-400 mb-6">Find Your Perfect
+                Item</h2>
+
+            <div class="search-form mt-8">
+                <div class="search-input-group ">
+                    <input type="text"
+                        class="search-input light:bg-white ligth:text-black dark:bg-black dark:text-white"
+                        [(ngModel)]="searchTerm" name="searchTerm" placeholder="Search by product name..."
+                        [ngClass]="{'search-input-error': searchTerm.length > 0 && filteredProducts.length === 0}" />
+                    <button type="button" (click)="searchProducts()" class="search-button" aria-label="Search">
+                        <svg class="search-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="subcategory-select-container">
+                    <select class="subcategory-select" [(ngModel)]="selectedSubcategory" name="selectedSubcategory"
+                        (change)="filterBySubcategory()">
+                        <option class="light: text-black dark:text-white" value="">All Subcategories</option>
+                        <option class="light: text-black dark:text-white" *ngFor="let subcategory of subcategories"
+                            [value]="subcategory.id">
+                            {{ subcategory.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid Section -->
+        <div>
+            <h2 class="text-center text-3xl font-bold text-gray-800 dark:text-white mb-8">Featured Products</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12 mt-12">
+                <div *ngFor="let product of filteredProducts | paginate: { itemsPerPage: pageSize, currentPage: page }"
+                    class="products-cards relative light:bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md dark:shadow-xl
+                border light:border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-indigo-300 dark:hover:border-indigo-500">
+                    <div
+                        class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold z-10 shadow-sm">
+                        {{(((product.base_price - product.offer_price) / product.base_price) * 100).toFixed(0)}}% OFF
+                    </div>
+
+                    <!-- Indicador visual de tarjeta (borde superior con color) -->
+                    <div class="h-1 bg-gradient-to-r from-indigo-500 to-purple-500 w-full absolute top-0 left-0"></div>
+
+                    <a class="block h-56 overflow-hidden" [routerLink]="['/product',product.id]">
+                        <img class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                            [src]="'http://localhost:8000/storage/'+ product.image_url" alt="{{ product.name }}" />
+                    </a>
+
+                    <div class="p-6">
+                        <a [routerLink]="['/product',product.id]" class="block text-lg font-semibold light:text-gray-800 dark:text-gray-100 mb-4 leading-snug
+                        light:hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                            {{ product.name }}
+                        </a>
+
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-2xl font-bold light:text-gray-800 dark:text-gray-100">${{product.offer_price}}</span>
+                            <span
+                                class="text-base text-gray-500 dark:text-gray-400 line-through">${{product.base_price}}</span>
+                        </div>
+
+                        <a [routerLink]="['/product',product.id]" class="block w-full py-3 text-center bg-indigo-600 dark:bg-indigo-500 text-white font-semibold rounded-lg
+                        hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-colors duration-200 shadow-sm">
+                            View Product
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Empty state when no products found -->
+            <div *ngIf="filteredProducts.length === 0"
+                class="flex flex-col items-center justify-center py-20 px-4 light:bg-white dark:bg-gray-800 rounded-2xl shadow-md dark:shadow-xl border border-gray-200 dark:border-gray-700 my-12">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 light:text-gray-400 dark:text-gray-500 mb-6"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-2xl font-bold light:text-gray-800 dark:text-white mb-3">No products found</h3>
+                <p class="light:text-gray-600 dark:text-gray-300 text-center mb-8 max-w-md">
+                    Try adjusting your search or filter criteria
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center mt-12 mb-8 gap-4">
+                <div class="flex items-center space-x-2 text-gray-700 dark:text-gray-300">
+                    <label class="text-sm font-medium light:text-black dark:text-white">Items per page:</label>
+                    <select (change)="changePageSize($event)"
+                        class="light:bg-white dark:bg-gray-700 light:text-gray-800 dark:text-white border light:border-gray-300 dark:border-gray-600 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400">
+                        <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+                    </select>
+                </div>
+
+                <pagination-controls class="text-center" (pageChange)="page = $event" previousLabel="Previous"
+                    nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+                    screenReaderCurrentLabel="You're on page">
+                </pagination-controls>
+            </div>
+
+        </div>
