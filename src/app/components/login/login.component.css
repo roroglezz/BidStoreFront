@@ -1,0 +1,36 @@
+/* Estilos específicos para el login en modo oscuro */
+
+.dark .min-h-screen {
+    background: linear-gradient(to bottom right, #1f2937, #111827, #1f2937);
+}
+
+/* Asegurar que la onda en el encabezado tenga el color correcto en modo oscuro */
+.dark svg path {
+    fill: #1f2937;
+}
+
+/* Efectos de enfoque para inputs en modo oscuro */
+.dark input:focus {
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.4);
+}
+
+/* Mejorar el contraste de los placeholders en modo oscuro */
+.dark input::placeholder {
+    color: rgba(156, 163, 175, 0.7);
+}
+
+/* Efectos hover mejorados para el modo oscuro */
+.dark button:hover {
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+/* Asegurar que el checkbox tenga buen contraste en modo oscuro */
+.dark input[type="checkbox"] {
+    border-color: rgba(156, 163, 175, 0.7);
+    background-color: rgba(31, 41, 55, 0.8);
+}
+
+.dark input[type="checkbox"]:checked {
+    background-color: #6366f1;
+    border-color: #6366f1;
+}

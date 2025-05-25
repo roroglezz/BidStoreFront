@@ -1,0 +1,118 @@
+*{
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 1.5s ease;
+    /* Ajustado de 0.7s a 1.5s para una animación más lenta */
+}
+
+/* Container styling with theme support */
+.categories-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    transition: all 0.3s ease;
+}
+
+/* Card styling with theme variants */
+.category-card {
+    background-color: var(--card-background, #5a5a5a);  /* Cambiado a un gris mucho más oscuro */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow, 0 4px 20px rgba(0, 0, 0, 0.2));  /* Sombra más pronunciada */
+    transition: all 0.6s ease;
+    /* Ajustado de 0.3s a 0.6s para un efecto más suave */
+}
+
+.dark-theme .category-card {
+    background-color: var(--card-background, #121212);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+}
+
+/* Image container styling */
+.image-container {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+/* Hover overlay transition - más lenta */
+.image-container .absolute {
+    transition: opacity 0.6s ease;
+    /* Ajustado a 0.6s para coincidir con otras transiciones */
+}
+
+/* Card content styling with theme variants */
+.card-content {
+    padding: 1.25rem;
+}
+
+.dark-theme .card-content h5 {
+    color: var(--text-color, #ffffff);
+}
+
+/* Button styling with theme variants */
+.explore-btn {
+    background-color: var(--primary-color, #6366f1);
+    color: white;
+    transition: all 0.4s ease;
+    /* Ajustado de 0.2s a 0.4s */
+}
+
+.dark-theme .explore-btn {
+    background-color: var(--primary-color, #6366f1);
+}
+
+.explore-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    filter: brightness(1.1);
+}
+
+.dark-theme .explore-btn:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme specific background */
+.dark-theme .categories-container-wrapper {
+    background: var(--background-dark, #121212);
+}
+
+/* Header section styling */
+.category-header h1 {
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.dark-theme .category-header h1 {
+    background-image: linear-gradient(to right, #60a5fa, #818cf8);
+}
+
+/* Card hover transition - más gradual */
+.group {
+    transform: translateY(0);
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+        box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.group:hover {
+    transform: translateY(-6px);
+}
+
+/* Adjust SVG icon animation */
+.group svg {
+    transition: transform 0.6s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .categories-container {
+        width: 95%;
+        margin: 1rem auto;
+    }
+}

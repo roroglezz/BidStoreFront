@@ -1,0 +1,200 @@
+<div class="auctions-page bg-gray-50 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <app-loading *ngIf="loading"></app-loading>
+
+    <div *ngIf="!loading" class="max-w-7xl mx-auto">
+        <!-- Encabezado de página -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                Active Auctions
+            </h1>
+            <p class="mt-2 text-lg text-gray-600">
+                Discover exclusive items and place your bids before time runs out.
+            </p>
+        </div>
+
+        <!-- Filtros y búsqueda -->
+        <div class="mb-6 bg-white rounded-lg shadow-sm p-4 grid sm:grid-cols-4 gap-4">
+            <div class="sm:col-span-2">
+                <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+                <div class="relative rounded-md shadow-sm">
+                    <input type="text" name="search" id="search"
+                        class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-4 pr-10 py-2 sm:text-sm border-gray-300 rounded-md"
+                        placeholder="Search auctions..." [(ngModel)]="searchQuery" (input)="applyFilters()">
+                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                            fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label for="sort" class="block text-sm font-medium text-gray-700 mb-1">Sort by</label>
+                <select id="sort" name="sort"
+                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    [(ngModel)]="sortOption" (change)="applyFilters()">
+                    <option value="end-soon">Ending Soon</option>
+                    <option value="newest">Newest First</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="subcategory" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                <select id="subcategory" name="subcategory"
+                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    [(ngModel)]="subcategoryFilter" (change)="applyFilters()">
+                    <option value="">All Categories</option>
+                    <option *ngFor="let subcategory of subcategories" [value]="subcategory.id">
+                        {{subcategory.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Mensajes de estado -->
+        <div *ngIf="filteredAuctions.length === 0" class="text-center py-16 bg-white rounded-xl shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 class="mt-2 text-sm font-medium text-gray-900">No auctions found</h3>
+            <p class="mt-1 text-sm text-gray-500">
+                Try changing your search criteria or check back later.
+            </p>
+        </div>
+
+        <!-- Lista de subastas -->
+        <div *ngIf="filteredAuctions.length > 0"
+            class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div *ngFor="let auction of paginatedAuctions"
+                class="group bg-white rounded-xl shadow-md overflow-hidden transition-all hover:shadow-lg focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
+                <!-- Etiqueta de tiempo restante -->
+                <div class="auction-timer">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium shadow-sm"
+                        [ngClass]="getTimeRemainingClass(auction)">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        {{calculateTimeRemaining(auction.created_at, auction.duration)}}
+                    </span>
+                </div>
+
+                <!-- Enlace a detalles que envuelve la imagen -->
+                <a [routerLink]="['/auctions', auction.id]" class="block relative">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 overflow-hidden">
+                        <img [src]="'http://localhost:8000/storage/'+ auction.product.image_url" alt="{{auction.product.name}} image"
+                            class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                            loading="lazy">
+                    </div>
+                </a>
+
+                <!-- Información de la subasta -->
+                <div class="p-4">
+                    <a [routerLink]="['/auctions', auction.id]" class="block">
+                        <h2
+                            class="text-lg font-bold text-gray-900 line-clamp-1 mb-1 group-hover:text-indigo-600 transition-colors">
+                            {{auction.product.name}}
+                        </h2>
+                    </a>
+
+                    <p class="text-sm text-gray-500 line-clamp-2 mb-3 h-10">
+                        {{auction.product.description}}
+                    </p>
+
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-sm text-gray-500">{{ isAuctionExpired(auction) ? 'Final bid' : 'Current bid' }}</p>
+                            <p class="text-xl font-bold text-indigo-600">
+                                {{auction.auction_price | currency:'EUR':'symbol':'1.2-2'}}
+                            </p>
+                            <!-- Mostrar el nombre del comprador con estilo diferente si la subasta ha terminado -->
+                            <p *ngIf="auction.buyer_id" class="text-sm font-medium" 
+                               [ngClass]="{'text-green-600 font-bold': isAuctionExpired(auction), 'text-gray-600': !isAuctionExpired(auction)}">
+                                {{ isAuctionExpired(auction) ? 'Winner: ' : 'Highest bidder: ' }}
+                                {{auction.buyer.name}}
+                            </p>
+                            <p class="text-xs text-gray-500 mt-1">
+                                Base price: {{auction.product.base_price | currency:'EUR':'symbol':'1.2-2'}}
+                            </p>
+                        </div>
+                    
+                        <!-- Botón de puja con estados diferentes según si la subasta ha expirado -->
+                        <button
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white"
+                            [ngClass]="{
+                                'bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500': !isAuctionExpired(auction),
+                                'bg-gray-400 cursor-not-allowed': isAuctionExpired(auction)
+                            }"
+                            [disabled]="isAuctionExpired(auction)"
+                            (click)="placeBid(auction)">
+                            {{ isAuctionExpired(auction) ? 'Auction Ended' : 'Place Bid' }}
+                        </button>
+                    </div>
+
+                    <!-- Detalles adicionales -->
+                    <div
+                        class="mt-4 pt-3 border-t border-gray-200 flex items-center justify-between text-sm text-gray-500">
+                        
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-gray-400"
+                                viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>{{getFormattedDate(auction.created_at)}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paginación -->
+        <div *ngIf="filteredAuctions.length > itemsPerPage" class="mt-8 flex justify-center">
+            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <button [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)"
+                    class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                    [class.cursor-not-allowed]="currentPage === 1" [class.opacity-50]="currentPage === 1">
+                    <span class="sr-only">Previous</span>
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+
+                <div *ngFor="let page of getPageArray()">
+                    <button (click)="changePage(page)" [class.bg-indigo-50]="page === currentPage"
+                        [class.border-indigo-500]="page === currentPage" [class.text-indigo-600]="page === currentPage"
+                        [class.hover:bg-indigo-100]="page === currentPage"
+                        class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        {{page}}
+                    </button>
+                </div>
+
+                <button [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)"
+                    class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                    [class.cursor-not-allowed]="currentPage === totalPages"
+                    [class.opacity-50]="currentPage === totalPages">
+                    <span class="sr-only">Next</span>
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </div>
+</div>

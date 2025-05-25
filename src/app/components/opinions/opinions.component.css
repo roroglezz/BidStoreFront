@@ -1,0 +1,118 @@
+* {
+    text-decoration: none;
+}
+
+/* Contenedor principal con tema */
+section {
+    transition: background-color 0.3s ease;
+}
+
+.dark-theme section {
+    background: var(--background-dark, #121212);
+}
+
+/* Estilos para el encabezado */
+.text-center h2 {
+    background-clip: text;
+    -webkit-background-clip: text;
+    transition: all 0.3s ease;
+}
+
+.dark-theme .text-center h2 {
+    background-image: linear-gradient(to right, #60a5fa, #818cf8);
+    color: transparent;
+}
+
+.dark-theme .text-center p {
+    color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+}
+
+/* Card de valoración general */
+.bg-gray-50,
+.bg-gray-800 {
+    transition: background-color 0.6s ease, box-shadow 0.6s ease;
+    border-radius: 0.75rem;
+}
+
+.dark-theme .bg-gray-50 {
+    background-color: var(--card-background, #121212); /* Cambiado a negro puro para coincidir con categorías */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+}
+
+/* Tarjetas de testimonios */
+.rounded-xl {
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); /* Misma transición que categorías */
+    transform: translateY(0);
+}
+
+.rounded-xl:hover {
+    transform: translateY(-6px); /* Mismo valor de elevación que categorías */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .bg-white.rounded-xl {
+    background-color: var(--card-background, #121212); /* Negro puro como en categorías */
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+}
+
+.dark-theme .rounded-xl:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* En modo oscuro necesitamos otra sombra */
+@media (prefers-color-scheme: dark) {
+    .rounded-xl:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Avatares de usuario */
+.rounded-full {
+    transition: all 0.4s ease;
+}
+
+.rounded-xl:hover .rounded-full {
+    transform: scale(1.05);
+}
+
+/* Textos */
+.dark-theme .text-gray-700 {
+    color: var(--text-secondary, rgba(255, 255, 255, 0.9)); /* Más brillante para mejor legibilidad */
+}
+
+.dark-theme .text-gray-900 {
+    color: var(--text-color, #ffffff);
+}
+
+/* Estrellas de valoración */
+.text-yellow-400 {
+    transition: color 0.3s ease;
+}
+
+.rounded-xl:hover .text-yellow-400 {
+    filter: brightness(1.1);
+}
+
+/* Barras de progreso */
+.bg-gray-200,
+.bg-yellow-400 {
+    transition: all 0.6s ease; /* Misma duración que otras transiciones */
+}
+
+/* Hover effects en general */
+.transition-transform {
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+        box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .text-center h2 {
+        font-size: 1.75rem;
+    }
+
+    .flex-col {
+        margin-bottom: 1rem;
+    }
+}

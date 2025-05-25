@@ -1,0 +1,54 @@
+<div class="carousel-container">
+    <div id="featuredProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button *ngFor="let product of featuredProducts; let i = index" type="button"
+                [attr.data-bs-target]="'#featuredProductsCarousel'" [attr.data-bs-slide-to]="i" [class.active]="i === 0"
+                aria-current="true">
+            </button>
+        </div>
+
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div *ngFor="let product of featuredProducts; let i = index" class="carousel-item" [class.active]="i === 0">
+                <div class="carousel-image-container">
+                    <img [src]="'http://localhost:8000/storage/'+ product.image_url" [alt]="product.name"
+                        class="d-block w-100">
+
+                    <!-- Content overlay -->
+                    <div class="carousel-caption">
+                        <div class="caption-content">
+                            <span class="badge bg-primary mb-2">Featured</span>
+                            <h2>{{ product.name }}</h2>
+                            <p class="description">{{ product.description | slice:0:100 }}{{ product.description.length
+                                > 100 ? '...' : '' }}</p>
+
+                            <div class="price-info">
+                                <div class="current-price">
+                                    <span class="price-label">Current Price:</span>
+                                    <span class="price-value">${{ product.offer_price }}</span>
+                                </div>
+
+                                <a [routerLink]="['/product', product.id]" class="btn btn-primary view-btn">
+                                    View Product
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#featuredProductsCarousel"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#featuredProductsCarousel"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>

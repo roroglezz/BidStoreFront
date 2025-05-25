@@ -1,0 +1,190 @@
+<div class="admin-dashboard">
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1 class="admin-title">Admin Dashboard</h1>
+            <p class="admin-subtitle ligth:text-gray-600 dark:text-white">Manage and monitor your auction platform</p>
+        </header>
+
+        <div class="admin-stats">
+            <div class="stat-card light:bg-gray dark:bg-black">
+                <div class="stat-icon light:bg-indigo-600 dark:bg-indigo-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <div class="stat-content light:text-gray-600 dark:text-white">
+                    <h3>Users</h3>
+                    <p class="stat-value light:text-[#1e293b] dark:text-white">{{numUsers}}</p>
+                </div>
+            </div>
+
+            <div class="stat-card light:bg-gray dark:bg-black">
+                <div class="stat-icon light:bg-indigo-600 dark:bg-indigo-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                </div>
+                <div class="stat-content light:text-gray-600 dark:text-white">
+                    <h3>Active Products</h3>
+                    <p class="stat-value light:text-[#1e293b] dark:text-white">{{numProducts}}</p>
+                </div>
+            </div>
+
+            <div class="stat-card light:bg-gray dark:bg-black">
+                <div class="stat-icon light:bg-indigo-600 dark:bg-indigo-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                </div>
+                <div class="stat-content light:text-gray-600 dark:text-white">
+                    <h3>Revenue</h3>
+                    <p class="stat-value light:text-[#1e293b] dark:text-white">$12,940</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-grid">
+            <!-- Users -->
+            <a [routerLink]="['/admin/users']" class="admin-card border-white-2" aria-label="Manage Users">
+                <div class="card-icon user-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2 class="light:text-black dark:text-white">Users</h2>
+                    <p>Manage user accounts, permissions, and profiles</p>
+                </div>
+                <div class="card-action">
+                    <span class="card-link">Manage</span>
+                </div>
+            </a>
+
+            <!-- Categories -->
+            <a [routerLink]="['/admin/categories']" class="admin-card" aria-label="Manage Categories">
+                <div class="card-icon category-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>Categories</h2>
+                    <p>Organize and manage product categories</p>
+                </div>
+                <div class="card-action">
+                    <span class="card-link">Manage</span>
+                </div>
+            </a>
+
+            <!-- Subcategories -->
+            <a [routerLink]="['/admin/subcategories']" class="admin-card" aria-label="Manage Subcategories">
+                <div class="card-icon subcategory-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3v18h18"></path>
+                        <path d="M3 9h18"></path>
+                        <path d="M15 3v18"></path>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>Subcategories</h2>
+                    <p>Create and edit subcategories for better organization</p>
+                </div>
+                <div class="card-action">
+                    <span class="card-link">Manage</span>
+                </div>
+            </a>
+
+            <!-- Products -->
+            <a [routerLink]="['/admin/products']" class="admin-card" aria-label="Manage Products">
+                <div class="card-icon product-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>Products</h2>
+                    <p>Manage product listings, details, and images</p>
+                </div>
+                <div class="card-action">
+                    <span class="card-link">Manage</span>
+                </div>
+            </a>
+
+            <!-- Conditions -->
+            <a [routerLink]="['/admin/conditions']" class="admin-card" aria-label="Manage Conditions">
+                <div class="card-icon condition-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>Conditions</h2>
+                    <p>Define and update product condition classifications</p>
+                </div>
+                <div class="card-action">
+                    <span class="card-link">Manage</span>
+                </div>
+            </a>
+
+            <!-- Auctions -->
+            <a [routerLink]="['/admin/auctions']" class="admin-card" aria-label="Manage Auctions">
+                <div class="card-icon auction-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>Auctions</h2>
+                    <p>Monitor active auctions, bids, and transactions</p>
+                </div>
+                <div class="card-action">
+                    <span class="card-link">Manage</span>
+                </div>
+            </a>
+
+            <!-- Messages -->
+            <a [routerLink]="['/admin/messages']" class="admin-card" aria-label="Manage Messages">
+                <div class="card-icon message-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>Messages</h2>
+                    <p>Handle user communications and support tickets</p>
+                </div>
+                <div class="card-action">
+                    <span class="card-link">Manage</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

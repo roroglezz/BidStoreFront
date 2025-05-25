@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'BidStoreFront' title`, () => {
+  it(`should have the 'auction-manager-front' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('BidStoreFront');
+    expect(app.title).toEqual('auction-manager-front');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, BidStoreFront');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, auction-manager-front');
   });
 });

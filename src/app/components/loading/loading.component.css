@@ -1,0 +1,247 @@
+/* Loader Container */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Dark mode for loader container */
+.dark .loading-container {
+    background-color: rgba(17, 24, 39, 0.95);
+}
+
+/* Main Loader Component */
+.auction-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    transform: translateY(-20px);
+}
+
+/* Hammer Animation Container */
+.hammer-container {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hammer {
+    position: absolute;
+    transform-origin: 60% 80%;
+    animation: hammerSwing 1.6s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.dark .hammer {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.handle {
+    width: 14px;
+    height: 70px;
+    background: linear-gradient(to right, #7D5A50, #A87C5F);
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: -7px;
+}
+
+.dark .handle {
+    background: linear-gradient(to right, #8B6B5D, #B89071);
+    filter: brightness(0.85);
+}
+
+.head {
+    width: 50px;
+    height: 30px;
+    background: linear-gradient(135deg, #5D5FEF, #4338CA);
+    border-radius: 6px;
+    position: absolute;
+    top: -15px;
+    left: -25px;
+    box-shadow: 0 6px 16px rgba(67, 56, 202, 0.35);
+}
+
+.dark .head {
+    background: linear-gradient(135deg, #818CF8, #6366F1);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.5);
+}
+
+/* Loading Text */
+.loading-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F2937;
+    margin-top: 10px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.01em;
+}
+
+.dark .loading-text {
+    color: #E5E7EB;
+}
+
+.pulse-dots {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    height: 8px;
+}
+
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #5D5FEF, #4338CA);
+    animation: pulseFade 1.6s infinite;
+    box-shadow: 0 1px 3px rgba(79, 70, 229, 0.3);
+}
+
+.dark .pulse-dot {
+    background: linear-gradient(to bottom, #818CF8, #6366F1);
+    box-shadow: 0 1px 3px rgba(129, 140, 248, 0.6);
+}
+
+.pulse-dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.pulse-dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.pulse-dot:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Animations */
+@keyframes hammerSwing {
+    0%, 100% {
+        transform: rotate(-40deg);
+    }
+    45% {
+        transform: rotate(15deg) translateY(-2px);
+    }
+    50% {
+        transform: rotate(15deg) translateY(0);
+    }
+    55% {
+        transform: rotate(14deg) translateY(1px);
+    }
+}
+
+@keyframes pricePulse {
+    0%, 100% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+        filter: brightness(1.05);
+    }
+}
+
+@keyframes pricePulseDark {
+    0%, 100% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+        filter: brightness(1.15);
+    }
+}
+
+.dark .price-tag {
+    animation: pricePulseDark 1.6s infinite;
+}
+
+@keyframes pulseFade {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(0.85);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+@keyframes fadeBackground {
+    0% {
+        background-color: rgba(255, 255, 255, 0.92);
+    }
+    50% {
+        background-color: rgba(255, 255, 255, 0.97);
+    }
+    100% {
+        background-color: rgba(255, 255, 255, 0.92);
+    }
+}
+
+@keyframes fadeBackgroundDark {
+    0% {
+        background-color: rgba(17, 24, 39, 0.92);
+    }
+    50% {
+        background-color: rgba(17, 24, 39, 0.97);
+    }
+    100% {
+        background-color: rgba(17, 24, 39, 0.92);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .auction-loader {
+        transform: translateY(-10px) scale(0.9);
+    }
+    .loading-text {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 576px) {
+    .auction-loader {
+        transform: translateY(0) scale(0.85);
+    }
+    .loading-text {
+        font-size: 16px;
+    }
+    .price-tag {
+        font-size: 28px;
+    }
+}
+
+@media (prefers-reduced-motion) {
+    .hammer {
+        animation: hammerSwing 2.5s infinite ease-in-out;
+    }
+    .price-tag {
+        animation: pricePulse 2.5s infinite;
+    }
+    .dark .price-tag {
+        animation: pricePulseDark 2.5s infinite;
+    }
+    .pulse-dot {
+        animation: pulseFade 2.5s infinite;
+    }
+}
