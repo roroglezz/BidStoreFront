@@ -11,7 +11,7 @@
             </div>
 
             <!-- Botón de menú para dispositivos pequeños y medianos -->
-            <button (click)="toggleMobileMenu()" class="xl:hidden focus:outline-none">
+            <button (click)="toggleMobileMenu()" aria-label="Abrir menú de navegación" class="xl:hidden focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -62,7 +62,7 @@
             <div class="hidden xl:flex items-center space-x-4">
                 <!-- Búsqueda -->
                 <div class="relative">
-                    <input type="text" placeholder="Search..."
+                    <input type="text" placeholder="Search..." aria-label="Buscar"
                         class="py-2 pl-10 pr-4 w-64 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-2.5"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,7 +72,7 @@
                 </div>
 
                 <div *ngIf="authService.isLoggedIn()" class="relative">
-                    <a routerLink="/messages"
+                    <a routerLink="/messages" aria-label="Mensajes"
                         class="flex items-center justify-center h-10 w-10 rounded-full light:bg-gray-100 hover:bg-gray-200 transition-colors duration-200">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
@@ -99,14 +99,14 @@
                         Sign-up
                     </button>
 
-                    <button *ngIf="authService.isLoggedIn()" (click)="authService.logoutUser()"
+                    <button *ngIf="authService.isLoggedIn()" (click)="authService.logoutUser()" aria-label="Cerrar sesión"
                         class="px-4 mx-4 py-2 rounded-lg border border-red-500 text-red-500 hover:bg-red-50 transition-colors duration-200">
                         Logout
                     </button>
 
                     <!-- Perfil de usuario -->
                     <div *ngIf="authService.isLoggedIn()" class="dropdown-trigger relative">
-                        <a routerLink="/profile" (click)="$event.preventDefault()" class="block">
+                        <a routerLink="/profile" (click)="$event.preventDefault()" class="block" aria-label="Perfil de usuario">
                             <div
                                 class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 hover:bg-indigo-200 transition-colors duration-200">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -138,7 +138,7 @@
                         <img src="logo.webp" alt="Logo" class="h-8 w-auto object-contain rounded-md">
                         <span class="text-lg font-bold text-indigo-600">Auction Manager</span>
                     </a>
-                    <button (click)="toggleMobileMenu()" class="text-gray-500 hover:text-gray-700">
+                    <button (click)="toggleMobileMenu()" aria-label="Cerrar menú" class="text-gray-500 hover:text-gray-700">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -168,7 +168,7 @@
                 <!-- Búsqueda móvil -->
                 <div class="mb-6">
                     <div class="relative">
-                        <input type="text" placeholder="Search..."
+                        <input type="text" placeholder="Search..." aria-label="Buscar"
                             class="w-full py-2 pl-10 pr-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-2.5"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -192,7 +192,8 @@
 
                     <!-- Categorías expandibles en móvil -->
                     <div *ngIf="authService.isLoggedIn()">
-                        <button (click)="toggleCategoryMenu()"
+                        <button (click)="toggleCategoryMenu()" aria-label="Mostrar categorías"
+                            [attr.aria-expanded]="showCategoryMenu"
                             class="flex items-center justify-between w-full text-gray-700 hover:text-indigo-600">
                             <div class="flex items-center space-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -288,7 +289,8 @@
                         Sign-up
                     </button>
 
-                    <button *ngIf="authService.isLoggedIn()" (click)="authService.logoutUser(); toggleMobileMenu()"
+                    <button *ngIf="authService.isLoggedIn()" (click)="authService.logoutUser(); toggleMobileMenu()" 
+                        aria-label="Cerrar sesión"
                         class="w-full px-4 py-2 rounded-lg border border-red-500 text-red-500 hover:bg-red-50 transition-colors duration-200">
                         Logout
                     </button>

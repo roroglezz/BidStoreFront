@@ -40,7 +40,7 @@
                 <div class="subcategory-select-container">
                     <select class="subcategory-select" [(ngModel)]="selectedSubcategory" name="selectedSubcategory"
                         (change)="filterBySubcategory()">
-                        <option class="light: text-black dark:text-white" value="">All Subcategories</option>
+                        <option class="light: text-black dark:text-white" [ngValue]="null">All Subcategories</option>
                         <option class="light: text-black dark:text-white" *ngFor="let subcategory of subcategories"
                             [value]="subcategory.id">
                             {{ subcategory.name }}
